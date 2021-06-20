@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>backtracking</title>
+    <url>/2021/06/07/backtracking/</url>
+    <content><![CDATA[<h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><p>回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。</p>
+<p>回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。</p>
+<p>但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。</p>
+<p>许多复杂的，规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。</p>
+<h1 id="与穷举的联系"><a href="#与穷举的联系" class="headerlink" title="与穷举的联系"></a>与穷举的联系</h1><p>回溯法简单来说就是按照深度优先的顺序，穷举所有可能性的算法，但是回溯算法比暴力穷举法更高明的地方就是回溯算法可以随时判断当前状态是否符合问题的条件。</p>
+<p>一旦不符合条件，那么就退回到上一个状态，省去了继续往下探索的时间。</p>
+<p>回溯法的特点是深度优先遍历，也就是该问题的遍历顺序是1-&gt;2-&gt;3，然后从子节点3返回，从子节点2返回，再到1-&gt;3-&gt;2，以此类推。</p>
+<p>状态的返回只有当前的节点不再满足问题的条件或者我们已经找到了问题的一个解时，才会返回，否则会以深度优先一直在解空间树内遍历下去。</p>
+<p>当然，对于某些问题如果其解空间过大，即使用回溯法进行计算也有很高的时间复杂度，因为回溯法会尝试解空间树中所有的分支。</p>
+<h1 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h1><p>所以根据这类问题，我们有一些优化剪枝策略以及启发式搜索策略。</p>
+<p>所谓优化剪枝策略，就是判断当前的分支树是否符合问题的条件，如果当前分支树不符合条件，那么就不再遍历这个分支里的所有路径。</p>
+<p>所谓启发式搜索策略指的是，给回溯法搜索子节点的顺序设定一个优先级，从该子节点往下遍历更有可能找到问题的解。</p>
+<h1 id="一般步骤"><a href="#一般步骤" class="headerlink" title="一般步骤"></a>一般步骤</h1><p>回溯算法也叫试探法，它是一种系统地搜索问题的解的方法。</p>
+<p>用回溯算法解决问题的一般步骤：</p>
+<p>1、针对所给问题，定义问题的解空间，它至少包含问题的一个（最优）解。</p>
+<p>2、确定易于搜索的解空间结构,使得能用回溯法方便地搜索整个解空间 。</p>
+<p>3、以深度优先的方式搜索解空间，并且在搜索过程中用剪枝函数避免无效搜索。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Value&gt; result;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(路径，选择列表)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(满足结束条件)&#123;</span><br><span class="line">        result.add(路径);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(选择： 选择列表)&#123;</span><br><span class="line">        做选择；</span><br><span class="line">        backtrack(路径，选择列表);</span><br><span class="line">        撤销选择；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h1><p>回溯算法的基本思想是：从一条路往前走，能进则进，不能进则退回来，换一条路再试。</p>
+<p>回溯算法说白了就是穷举法。穷举的过程就是遍历一颗多叉树的过程。回溯算法的代码框架和多叉树遍历的代码框架类似。不过回溯算法使用剪枝函数，剪去一些不可能到达 最终状态（即答案状态）的节点，从而减少状态空间树节点的生成。</p>
+<p>回溯法是一个既带有系统性又带有跳跃性的的搜索算法。</p>
+<p>它在包含问题的所有解的解空间树中，按照深度优先的策略，从根结点出发搜索解空间树。</p>
+<p>算法搜索至解空间树的任一结点时，总是先判断该结点是否肯定不包含问题的解。</p>
+<p>如果肯定不包含，则跳过对以该结点为根的子树的系统搜索，逐层向其祖先结点回溯。</p>
+<p>否则，进入该子树，继续按深度优先的策略进行搜索。</p>
+<p>回溯法在用来求问题的所有解时，要回溯到根，且根结点的所有子树都已被搜索遍才结束。</p>
+<p>而回溯法在用来求问题的任一解时，只要搜索到问题的一个解就可以结束。</p>
+<p>这种以深度优先的方式系统地搜索问题的解的算法称为回溯法，它适用于解一些组合数较大的问题。</p>
+]]></content>
+      <categories>
+        <category>data_struct</category>
+      </categories>
+      <tags>
+        <tag>回溯 data</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二分查找</title>
+    <url>/2021/06/14/%E6%95%B0%E7%BB%84_%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<p>数组之二分法</p>
+<p>一看就会，一些就废的二分查找</p>
+<h1 id="704-二分查找"><a href="#704-二分查找" class="headerlink" title="704.二分查找"></a>704.二分查找</h1><p>题目链接：<a href="https://leetcode-cn.com/problems/binary-search/">https://leetcode-cn.com/problems/binary-search/</a></p>
+<p>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。</p>
+<p>这道题目的前提是数组为有序数组，同时题目还强调数组中无重复元素，因为一旦有重复元素，使用二分查找法返回的元素下标可能不是唯一的，这些都是使用二分法的前提条件，当大家看到题目描述满足如上条件的时候，可要想一想是不是可以用二分法了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">二分法使用条件：</span><br><span class="line">    数组有序</span><br><span class="line">    数组无重复元素</span><br><span class="line"></span><br><span class="line">边界条件：</span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right)</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)</span><br></pre></td></tr></table></figure>
+
+<p>写二分法经常写乱，主要是因为<strong>对区间的定义没有想清楚，区间的定义就是不变量</strong>。要在二分查找的过程中，保持不变量，就是在while寻找中每一次边界的处理都要坚持根据区间的定义来操作，这就是<strong>循环不变量</strong>规则。</p>
+<p>写二分法，区间的定义一般为两种，左闭右闭即[left, right]，或者左闭右开即[left, right)。</p>
+<h2 id="二分法第一种写法，-left-right"><a href="#二分法第一种写法，-left-right" class="headerlink" title="二分法第一种写法，[left,right]"></a>二分法第一种写法，[left,right]</h2><p>第一种写法，我们定义 target 是在一个在左闭右闭的区间里，<strong>也就是[left, right] （这个很重要非常重要）</strong>。<strong>因为定义target在[left, right]区间，所以有如下两点：</strong></p>
+<ul>
+<li>while (left &lt;= right) 要使用 &lt;= ，因为left == right是有意义的，所以使用 =</li>
+<li>if ( nums [middle]  &gt;  target)   right 要赋值为 middle - 1，因为当前这个nums[middle]一定不是target，那么接下来要查找的左区间结束下标位置就是 middle - 1</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.<span class="built_in">size</span>() - <span class="number">1</span>; <span class="comment">// 定义target在左闭右闭的区间里，[left, right]</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123; <span class="comment">// 当left==right，区间[left, right]依然有效，所以用 &lt;=</span></span><br><span class="line">            <span class="keyword">int</span> middle = left + ((right - left) / <span class="number">2</span>);<span class="comment">// 防止溢出 等同于(left + right)/2</span></span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle - <span class="number">1</span>; <span class="comment">// target 在左区间，所以[left, middle - 1]</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>; <span class="comment">// target 在右区间，所以[middle + 1, right]</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// nums[middle] == target</span></span><br><span class="line">                <span class="keyword">return</span> middle; <span class="comment">// 数组中找到目标值，直接返回下标</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 未找到目标值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二分法第二种写法，-left-right"><a href="#二分法第二种写法，-left-right" class="headerlink" title="二分法第二种写法，[left,right)"></a>二分法第二种写法，[left,right)</h2><p>有如下两点：</p>
+<ul>
+<li>while (left &lt; right)，这里使用 &lt; ,因为left == right在区间[left, right)是没有意义的</li>
+<li>if (nums[middle] &gt; target)  right 更新为 middle，因为当前nums[middle]不等于target，去左区间继续寻找，而寻找区间是左闭右开区间，所以right更新为middle，即：下一个查询区间不会去比较nums[middle]（已比较完毕）</li>
+</ul>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.<span class="built_in">size</span>(); <span class="comment">// 定义target在左闭右开的区间里，即：[left, right)  </span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123; <span class="comment">// 因为left == right的时候，在[left, right)是无效的空间，所以使用 &lt;</span></span><br><span class="line">            <span class="keyword">int</span> middle = left + ((right - left) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (nums[middle] &gt; target) &#123;</span><br><span class="line">                right = middle; <span class="comment">// target 在左区间，在[left, middle)中</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[middle] &lt; target) &#123;</span><br><span class="line">                left = middle + <span class="number">1</span>; <span class="comment">// target 在右区间，在[middle + 1, right)中</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// nums[middle] == target</span></span><br><span class="line">                <span class="keyword">return</span> middle; <span class="comment">// 数组中找到目标值，直接返回下标</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 未找到目标值</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>主要是要理解清楚边界的定义，在循环中要始终坚持根据查找区间的定义来做边界处理。</p>
+<p>区间的定义就是不变量，在循环中坚持根据查找区间的定义来做边界处理。</p>
+<h1 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h1><p>35.<a href="https://leetcode-cn.com/problems/search-insert-position/">https://leetcode-cn.com/problems/search-insert-position/</a></p>
+<p>34.<a href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/</a></p>
+<p>69.<a href="https://leetcode-cn.com/problems/sqrtx/">https://leetcode-cn.com/problems/sqrtx/</a></p>
+<p>367.<a href="https://leetcode-cn.com/problems/valid-perfect-square/">https://leetcode-cn.com/problems/valid-perfect-square/</a></p>
+]]></content>
+      <categories>
+        <category>data_struct</category>
+      </categories>
+      <tags>
+        <tag>二分法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>有序数组的平方</title>
+    <url>/2021/06/20/%E6%95%B0%E7%BB%84_%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/</url>
+    <content><![CDATA[<h1 id="有序数组的平方"><a href="#有序数组的平方" class="headerlink" title="有序数组的平方"></a>有序数组的平方</h1><p><a href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/">https://leetcode-cn.com/problems/squares-of-a-sorted-array/</a></p>
+<p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p>
+<p>示例 1：<br>输入：nums = [-4,-1,0,3,10]<br>输出：[0,1,9,16,100]<br>解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]</p>
+<p>示例 2：<br>输入：nums = [-7,-3,2,3,11]<br>输出：[4,9,9,49,121]</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><h2 id="暴力排序"><a href="#暴力排序" class="headerlink" title="暴力排序"></a>暴力排序</h2><p>每个数平方后，重新排序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sortedSquares(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.length ; i++)&#123;</span><br><span class="line">            nums[i] = nums[i] * nums[i];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度是O(nlogn+n);</p>
+<h2 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h2><p>i指向起始位置，j指向终止位置</p>
+<p>定义一个新数组result，让k指向result最终位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">如果nums[i] * nums[i] &lt; nums[j] * nums[j] 那么result[k--] = nums[j] * nums[j];</span><br><span class="line">如果nums[i] * nums[i] &gt; nums[j] * nums[j] 那么result[k--] = nums[i] * nums[i];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sortedSquares(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        <span class="keyword">int</span> num = nums.length -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span> , j=num;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(i &lt;= j)&#123; <span class="comment">//i&lt;=j  最后两个比较完，i j 将会相等，这时还要再插入到新的数组中</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i] * nums[i] &lt; nums[j] * nums[j])&#123;</span><br><span class="line">                result[num--] = nums[j] * nums[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                result[num--] = nums[i] * nums[i];</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时，时间复杂度为O(n)</p>
+<p><strong>双指针，妙啊！</strong></p>
+]]></content>
+      <categories>
+        <category>data_struct</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组_移除元素</title>
+    <url>/2021/06/15/%E6%95%B0%E7%BB%84_%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<h1 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27.移除元素"></a>27.移除元素</h1><p>题目地址：<a href="https://leetcode-cn.com/problems/remove-element/">https://leetcode-cn.com/problems/remove-element/</a></p>
+<p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并<strong>原地</strong>修改输入数组。</p>
+<p>示例 1:<br>给定 nums = [3,2,2,3], val = 3,<br>函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。<br>你不需要考虑数组中超出新长度后面的元素。</p>
+<p>示例 2:<br>给定 nums = [0,1,2,2,3,0,4,2], val = 2,<br>函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p>
+<p><strong>你不需要考虑数组中超出新长度后面的元素。</strong></p>
+<h2 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h2><p>两层for循环，一个for遍历数组，一个for更新数组</p>
+<p>显然，暴力解法的时间复杂度为O(n^2)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == val)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; len ; j++)&#123;</span><br><span class="line">                    nums[j-<span class="number">1</span>] = nums[j];</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//越界警告</span></span><br><span class="line">                <span class="comment">// for(int j = i; j &lt; len ; j++)&#123;</span></span><br><span class="line">                <span class="comment">//     nums[j] = nums[j+1];</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// &#125;</span></span><br><span class="line">                <span class="comment">//// 因为下表i以后的数值都向前移动了一位，所以i也向前移动一位</span></span><br><span class="line">                <span class="comment">//i处理多个连续target数</span></span><br><span class="line">                <span class="comment">//[0,1,2,2,3,0,4,2]</span></span><br><span class="line">                i--;</span><br><span class="line">                len--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h2><p>双指针法（快慢指针法）：<strong>通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。</strong></p>
+<p><strong>双指针法（快慢指针法）在数组和链表的操作中是非常常见的，很多考察数组、链表、字符串等操作的面试题，都使用双指针法。</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> slowIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> fastIndex = <span class="number">0</span>; fastIndex &lt; len; fastIndex++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fastIndex] != val)&#123;</span><br><span class="line">                nums[slowIndex] = nums[fastIndex];</span><br><span class="line">                slowIndex++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> slowIndex;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h1><p>26.<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/</a></p>
+<p>283.<a href="https://leetcode-cn.com/problems/move-zeroes/">https://leetcode-cn.com/problems/move-zeroes/</a></p>
+<p>844.<a href="https://leetcode-cn.com/problems/backspace-string-compare/">https://leetcode-cn.com/problems/backspace-string-compare/</a></p>
+<p>977.<a href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/">https://leetcode-cn.com/problems/squares-of-a-sorted-array/</a></p>
+]]></content>
+      <categories>
+        <category>data_struct</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>服务器配置</title>
+    <url>/2021/06/16/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>软件版本：</p>
+<p>Filezilla_3.52.2</p>
+<p>VMware Workstation 15.5 PRO</p>
+<p>SQLyog-13.1.7-0.x64Community</p>
+<h1 id="Linux-安装Mysql-apt-get-版"><a href="#Linux-安装Mysql-apt-get-版" class="headerlink" title="Linux 安装Mysql    apt-get 版"></a>Linux 安装Mysql    apt-get 版</h1><h2 id="更新apt-get"><a href="#更新apt-get" class="headerlink" title="更新apt-get"></a>更新apt-get</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装时可能报错：Could-not-get-lock-var-lib-dpkg-lock-frontend"><a href="#安装时可能报错：Could-not-get-lock-var-lib-dpkg-lock-frontend" class="headerlink" title="安装时可能报错：Could not get lock /var/lib/dpkg/lock-frontend"></a>安装时可能报错：Could not get lock /var/lib/dpkg/lock-frontend</h3><h4 id="原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行"><a href="#原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行" class="headerlink" title="原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行"></a>原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行</h4><h4 id="解决方法：使用ps-和-grep-查找apt-的pid，并使用kill杀掉"><a href="#解决方法：使用ps-和-grep-查找apt-的pid，并使用kill杀掉" class="headerlink" title="解决方法：使用ps 和 grep 查找apt 的pid，并使用kill杀掉"></a>解决方法：使用ps 和 grep 查找apt 的pid，并使用kill杀掉</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">l:~$  ps afx|grep apt</span><br><span class="line">16214 ?        S      0:00  \_ sudo apt install rpm</span><br><span class="line">16215 ?        S      0:01  |   \_ apt install rpm</span><br><span class="line">16721 pts/3    S+     0:00          \_ grep --color=auto apt</span><br><span class="line">l:~$ <span class="built_in">kill</span> 16214</span><br><span class="line">bash: <span class="built_in">kill</span>: (16214) - Operation not permitted</span><br><span class="line">l:~$ sudo <span class="built_in">kill</span> 16214</span><br><span class="line">l:~$ sudo <span class="built_in">kill</span> 16215</span><br></pre></td></tr></table></figure>
+
+<p>再执行安装命令即可！</p>
+<h1 id="FTP互传文件"><a href="#FTP互传文件" class="headerlink" title="FTP互传文件"></a>FTP互传文件</h1><h2 id="Windows下安装FTP客户端"><a href="#Windows下安装FTP客户端" class="headerlink" title="Windows下安装FTP客户端"></a>Windows下安装FTP客户端</h2><p>在FileZilla官网下载安装即可</p>
+<p>连接站点管理器中，端口默认不填，加密选择-只使用明文FTP，用户名密码为Ubuntu用户名密码，字符集选择-强制UTF-8</p>
+<h2 id="Ubuntu下相关配置"><a href="#Ubuntu下相关配置" class="headerlink" title="Ubuntu下相关配置"></a>Ubuntu下相关配置</h2><h3 id="1、开启Ubuntu下的FTP服务"><a href="#1、开启Ubuntu下的FTP服务" class="headerlink" title="1、开启Ubuntu下的FTP服务"></a>1、开启Ubuntu下的FTP服务</h3><p>安装FTP服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br></pre></td></tr></table></figure>
+
+<p>打开配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vi /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>取消注释</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br></pre></td></tr></table></figure>
+
+<p>保存退出，重启FTP</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo /etc/init.d/vsftpd restart</span><br></pre></td></tr></table></figure>
+
+<h1 id="SQLyog连接mysql"><a href="#SQLyog连接mysql" class="headerlink" title="SQLyog连接mysql"></a>SQLyog连接mysql</h1><h2 id="ubuntu开放3306端口"><a href="#ubuntu开放3306端口" class="headerlink" title="ubuntu开放3306端口"></a>ubuntu开放3306端口</h2><h3 id="1、查看端口是否打开"><a href="#1、查看端口是否打开" class="headerlink" title="1、查看端口是否打开"></a>1、查看端口是否打开</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -an|grep 3306</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.jpg" alt="端口"></p>
+<h3 id="2、打开mysql配置文件"><a href="#2、打开mysql配置文件" class="headerlink" title="2、打开mysql配置文件"></a>2、打开mysql配置文件</h3><p>将bind-address = 127.0.0.1 注释</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、重启ubuntu"><a href="#3、重启ubuntu" class="headerlink" title="3、重启ubuntu"></a>3、重启ubuntu</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、再次查看端口是否打开"><a href="#4、再次查看端口是否打开" class="headerlink" title="4、再次查看端口是否打开"></a>4、再次查看端口是否打开</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -an|grep 3306</span><br></pre></td></tr></table></figure>
+
+<p>此时3306端口已经打开</p>
+<h2 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h2><p>登录： mysql -u root -p &lt;回车&gt;</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update mysql.user <span class="built_in">set</span> host = <span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user =<span class="string">&#x27;root&#x27;</span> <span class="built_in">limit</span> 1;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service mysql restart</span><br><span class="line">sudo service mysql start</span><br><span class="line">sudo service mysql stop</span><br></pre></td></tr></table></figure>
+
+<p>重启mysql</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/etc/init.d/mysql restart </span><br></pre></td></tr></table></figure>
+
+<p>到此，可以在任何主机连接此mysql数据库服务器了</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/04/17/hello-world/hello-world/</url>
+    <content><![CDATA[<p>Welcome </p>
+]]></content>
+  </entry>
+  <entry>
+    <title>my first blog</title>
+    <url>/2021/06/07/test-1/test/</url>
+    <content><![CDATA[<p>hello，world！</p>
+<p>hello，Hexo！</p>
+<p>[<img src="https://imgtu.com/i/2BQyW9" alt="2BQyW9.jpg">]</p>
+<p><img src="/img/test.jpg" alt="外链图片"></p>
+]]></content>
+      <categories>
+        <category>-test分类</category>
+      </categories>
+      <tags>
+        <tag>-测试标签</tag>
+      </tags>
+  </entry>
+</search>
