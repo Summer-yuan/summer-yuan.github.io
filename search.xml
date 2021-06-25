@@ -219,4 +219,43 @@
         <tag>-测试标签</tag>
       </tags>
   </entry>
+  <entry>
+    <title>滑动窗口-长度最小的子数组</title>
+    <url>/2021/06/25/%E6%95%B0%E7%BB%84_%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
+    <content><![CDATA[<h1 id="长度最小的子数组"><a href="#长度最小的子数组" class="headerlink" title="长度最小的子数组"></a>长度最小的子数组</h1><p>题目链接：<a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">https://leetcode-cn.com/problems/minimum-size-subarray-sum/</a></p>
+<p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
+<p>示例：</p>
+<p>输入：s = 7, nums = [2,3,1,2,4,3]<br>输出：2<br>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</p>
+<h1 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h1><p>暴力解法两个for 遍历数组，不断寻找满足要求的子数组，并记录长度，显然时间复杂度为O(N^2)</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> length = nums.length;</span><br><span class="line">      <span class="keyword">int</span> subLength = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> result = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">         sum = <span class="number">0</span>; <span class="comment">//清零，新的下标i处开始</span></span><br><span class="line">         <span class="comment">//不用担心一个i循环里面 前面数字小，sublength得到大值，而没有算后面的较小值</span></span><br><span class="line">         <span class="comment">//一个i里找到一个即可   总会遍历到较大nums[i] 开始计数的 较小的 sublength</span></span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; length; j++) &#123;</span><br><span class="line"></span><br><span class="line">            sum += nums[j];</span><br><span class="line"></span><br><span class="line">               <span class="keyword">if</span>(sum &gt;= target)&#123;</span><br><span class="line">                  subLength = j -i + <span class="number">1</span>;</span><br><span class="line">                  result = subLength&lt;result ? subLength : result;</span><br><span class="line">                  </span><br><span class="line">               &#125;</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p>所谓滑动窗口，就是不断的调节子序列的起始位置和终止位置，从而得出我们要想的结果。</p>
+<p>滑动窗口也可以理解为双指针法的一种！只不过这种解法更像是一个窗口的移动，所以叫做滑动窗口更适合一些。</p>
+<p>在本题中实现滑动窗口，主要确定如下三点：</p>
+<ul>
+<li>窗口内是什么？</li>
+<li>如何移动窗口的起始位置？</li>
+<li>如何移动窗口的结束位置？</li>
+</ul>
+<p>窗口就是 满足其和 ≥ s 的长度最小的 连续 子数组。</p>
+<p>窗口的起始位置如何移动：如果当前窗口的值大于s了，窗口就要向前移动了（也就是该缩小了）。</p>
+<p>窗口的结束位置如何移动：窗口的结束位置就是遍历数组的指针，窗口的起始位置设置为数组的起始位置就可以了。</p>
+<p>滑动窗口的精妙之处在于<em><strong>根据当前子序列和大小的情况，不断调节子序列的起始位置</strong></em>。从而将O(n^2)的暴力解法降为O(n)。</p>
+<p>核心代码：</p>
+<p>begin 为起始位置，i 为结束位置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>( sum &gt;= target )&#123;</span><br><span class="line">            subLength = i - begin + <span class="number">1</span>;</span><br><span class="line">            result = subLength&lt;result ? subLength : result;</span><br><span class="line">            sum -= nums[begin++];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> length = nums.length;</span><br><span class="line">      <span class="keyword">int</span> subLength = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> begin = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> result = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">         sum += nums[i];</span><br><span class="line"></span><br><span class="line">         <span class="keyword">while</span>(sum &gt;= target)&#123;</span><br><span class="line">            subLength = i - begin + <span class="number">1</span>;</span><br><span class="line">            result = subLength&lt;result ? subLength : result;</span><br><span class="line">            sum -= nums[begin++];</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>data_struct</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
 </search>
