@@ -239,6 +239,23 @@
     <link href="http://example.com/2021/06/07/%E6%A8%A1%E6%9D%BF/"/>
     <id>http://example.com/2021/06/07/%E6%A8%A1%E6%9D%BF/</id>
     <published>2021-06-07T12:00:59.000Z</published>
+    <updated>2021-06-26T14:51:04.646Z</updated>
+    
+    
+    
+    
+    <category term="-test分类" scheme="http://example.com/categories/test%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="-测试标签" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95%E6%A0%87%E7%AD%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>my first blog</title>
+    <link href="http://example.com/2021/06/07/%E6%A8%A1%E6%9D%BF%20-%20%E5%89%AF%E6%9C%AC/"/>
+    <id>http://example.com/2021/06/07/%E6%A8%A1%E6%9D%BF%20-%20%E5%89%AF%E6%9C%AC/</id>
+    <published>2021-06-07T12:00:59.000Z</published>
     <updated>2021-06-08T10:25:54.999Z</updated>
     
     
