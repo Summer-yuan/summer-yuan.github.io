@@ -258,4 +258,44 @@
         <tag>数组</tag>
       </tags>
   </entry>
+  <entry>
+    <title>for循环中的++i和i++</title>
+    <url>/2021/06/26/for%E5%BE%AA%E7%8E%AF/</url>
+    <content><![CDATA[<p>for(语句1;语句2;语句3)</p>
+<p>语句1 在循环（代码块）开始前执行</p>
+<p>语句2 定义运行循环（代码块）的条件</p>
+<p>语句3 在循环（代码块）已被<em><strong>执行之后</strong></em>执行</p>
+<p><strong>所以for循环条件中的++i 和 i++ 在结果上没有什么区别</strong></p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>;i++)&#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>;++i)&#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>但是，i++ 是在使用当前值后再加一，所以需要一个临时变量来转存</p>
+<p>而++i 则是直接+1，省去了对内存的操作环节，相对而言能够提高性能！</p>
+]]></content>
+      <categories>
+        <category>data_struct</category>
+      </categories>
+      <tags>
+        <tag>小知识点</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>my first blog</title>
+    <url>/2021/06/07/%E6%A8%A1%E6%9D%BF/</url>
+    <content><![CDATA[<p>hello，world！</p>
+<p>hello，Hexo！</p>
+<p>[<img src="https://imgtu.com/i/2BQyW9" alt="2BQyW9.jpg">]</p>
+<p><img src="/img/test.jpg" alt="外链图片"></p>
+]]></content>
+      <categories>
+        <category>-test分类</category>
+      </categories>
+      <tags>
+        <tag>-测试标签</tag>
+      </tags>
+  </entry>
 </search>
