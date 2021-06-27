@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-26T15:31:23.115Z</updated>
+  <updated>2021-06-27T02:46:30.291Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>费马和帕斯卡系统</title>
+    <link href="http://example.com/2021/06/27/%E6%9D%82%E4%B9%A6/%E8%B4%B9%E9%A9%AC%E5%92%8C%E5%B8%95%E6%96%AF%E5%85%8B/"/>
+    <id>http://example.com/2021/06/27/%E6%9D%82%E4%B9%A6/%E8%B4%B9%E9%A9%AC%E5%92%8C%E5%B8%95%E6%96%AF%E5%85%8B/</id>
+    <published>2021-06-26T16:00:00.000Z</published>
+    <updated>2021-06-27T02:46:30.291Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;《费马和帕斯卡系统的思维模型》；任何思维模型，在了解了其背后的原理后，都需要自己在实际生活中刻意去练习。费马帕斯卡系统给我们的启示是要用实际的概率去分析和做决策，不能以表面现象和自身经验去下结论。查理芒格说，我们只有把这些基础的不自然的数学概率方法变成我们生活的一部分，才不</summary>
+        
+      
+    
+    
+    
+    <category term="杂书" scheme="http://example.com/categories/%E6%9D%82%E4%B9%A6/"/>
+    
+    
+    <category term="思维模型" scheme="http://example.com/tags/%E6%80%9D%E7%BB%B4%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>设计链表</title>
