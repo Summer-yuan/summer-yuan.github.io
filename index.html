@@ -144,23 +144,84 @@
     
     
     <article
-  id="post-模板"
+  id="post-正则表达式必知必会"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/"
+    >正则表达式必知必会</a> 
+</h2>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
-      <a href="/2021/06/27/%E6%A8%A1%E6%9D%BF/" class="article-date">
-  <time datetime="2021-06-26T16:00:00.000Z" itemprop="datePublished">2021-06-27</time>
-</a>    
+      <a href="/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-date">
+  <time datetime="2021-09-06T16:00:00.000Z" itemprop="datePublished">2021-09-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+  </div>
+   
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h1 id="4、使用元字符"><a href="#4、使用元字符" class="headerlink" title="4、使用元字符"></a>4、使用元字符</h1><p>元字符：正则表达式中有着特殊含义的字符(如’ .‘表示任意字符,[]表示字符区间)，这些字符要表达其本身意思的话，就要使用反斜杠字符\来转义</p>
+<h2 id="4-1-匹配空白字符"><a href="#4-1-匹配空白字符" class="headerlink" title="4.1 匹配空白字符"></a>4.1 匹配空白字符</h2><p>\n 换行符</p>
+<p>\r 回车符</p>
+<p>\t 制表符</p>
+<p>windows中文本行结束标志为 \r\n</p>
+<p>\r  是指针回到本行的首字符处</p>
+<p>\n 是跳到下一行原处</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/amqvje/article/details/38370681">\r\n解释</a></p>
+<h3 id="4-2-匹配特定的字符类型"><a href="#4-2-匹配特定的字符类型" class="headerlink" title="4.2 匹配特定的字符类型"></a>4.2 匹配特定的字符类型</h3><h3 id="4-2-1-匹配数字"><a href="#4-2-1-匹配数字" class="headerlink" title="4.2.1 匹配数字"></a>4.2.1 匹配数字</h3><p>[0-9] 匹配任何一个数字  等价于 \d</p>
+<p>[^0-9] 等价于\D</p>
+<h3 id="4-2-2-匹配字母数字"><a href="#4-2-2-匹配字母数字" class="headerlink" title="4.2.2 匹配字母数字"></a>4.2.2 匹配字母数字</h3><p>[a-zA-Z0-9_]   任何一个字母数字字符或下划线  等价于 \w</p>
+<p>[^a-zA-Z0-9_]  \W</p>
+<p>4.2.3 匹配空白字符</p>
+<p>[\f\n\r\t\v] 任何一个空白字符 等价于 \s</p>
+<p>[^\f\n\r\t\v] 任何一个非空白字符 等价于 \S</p>
+<h1 id="5、重复匹配"><a href="#5、重复匹配" class="headerlink" title="5、重复匹配"></a>5、重复匹配</h1><p>+是一个元字符</p>
+<h2 id="5-1匹配一个或多个字符"><a href="#5-1匹配一个或多个字符" class="headerlink" title="5.1匹配一个或多个字符"></a>5.1匹配一个或多个字符</h2><p>[a-zA-Z0-9_]+   或 \w+</p>
+<p>邮箱地址 ： \w+@\w+.\w+</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\w+@\w+\.\w+</span><br></pre></td></tr></table></figure>
+
+<p>但不能识别全 <a href="mailto:&#98;&#x65;&#x6e;&#46;&#102;&#111;&#x72;&#x74;&#64;&#x66;&#x6f;&#x72;&#116;&#x2e;&#99;&#111;&#x6d;">&#98;&#x65;&#x6e;&#46;&#102;&#111;&#x72;&#x74;&#64;&#x66;&#x6f;&#x72;&#116;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>匹配字符集合: [\w.]  字符集中. + 这样的元字符不需要转义，被解释为普通字符。但转义了也没有坏处，效果是一样的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[\w.]+@[\w.]+\.\w+</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-1-2匹配零个或多个字符"><a href="#5-1-2匹配零个或多个字符" class="headerlink" title="5.1.2匹配零个或多个字符"></a>5.1.2匹配零个或多个字符</h2><p>+至少要匹配一个目标字符</p>
+<p>*匹配一个可有可无的字符</p>
+<p>[\w.]* 匹配.或字母数字字符的零次或多次重复</p>
+<p><a href="mailto:&#x2e;&#98;&#x65;&#110;&#64;&#49;&#x35;&#51;&#x2e;&#x63;&#x6f;&#x6d;">&#x2e;&#98;&#x65;&#110;&#64;&#49;&#x35;&#51;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\w+[\w.]*@[\w.]+\.\w+</span><br></pre></td></tr></table></figure>
+
+<p>过滤掉邮箱前面的.</p>
+<h2 id="5-1-3匹配零个或一个字符"><a href="#5-1-3匹配零个或一个字符" class="headerlink" title="5.1.3匹配零个或一个字符"></a>5.1.3匹配零个或一个字符</h2><p>? 匹配可选文本，就算文本没有出现，也可匹配。但是与+不同， ？只能匹配某个字符（或字符集合）的零次或一次出现，最多不超过一次。</p>
+<p>匹配URL地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https?:\/\/[\w.\/]+</span><br></pre></td></tr></table></figure>
+
+<p>可匹配http://，也可匹配https:// 。</p>
+<h2 id="5-2匹配的重复次数"><a href="#5-2匹配的重复次数" class="headerlink" title="5.2匹配的重复次数"></a>5.2匹配的重复次数</h2><p>{和}是元字符</p>
+<h2 id="5-2-1-具体的重复匹配"><a href="#5-2-1-具体的重复匹配" class="headerlink" title="5.2.1 具体的重复匹配"></a>5.2.1 具体的重复匹配</h2><p>{3} 意味着匹配前一个字符（或字符集合）3次，如果只能匹配两次，则不算匹配成功。</p>
+<h2 id="5-2-2区间范围"><a href="#5-2-2区间范围" class="headerlink" title="5.2.2区间范围"></a>5.2.2区间范围</h2><p>{2,4} 最少匹配2次，最多匹配4次</p>
+<p>重复范围也可以从0开始，{0,3}表示重复次数可以是0,1,2,3.  ？等效于{0,1}</p>
+<h2 id="5-2-3-匹配-至少重复多少次"><a href="#5-2-3-匹配-至少重复多少次" class="headerlink" title="5.2.3 匹配 至少重复多少次"></a>5.2.3 匹配 至少重复多少次</h2><p>{3,} 表示至少重复3次</p>
+<p>+在功能上等效于{1,} </p>
+<h1 id="6、位置匹配"><a href="#6、位置匹配" class="headerlink" title="6、位置匹配"></a>6、位置匹配</h1><h2 id="6-1-边界-boundary"><a href="#6-1-边界-boundary" class="headerlink" title="6.1 边界 boundary"></a>6.1 边界 boundary</h2><p>元字符 ： \b</p>
+<h2 id="6-2-单词边界"><a href="#6-2-单词边界" class="headerlink" title="6.2 单词边界"></a>6.2 单词边界</h2><p>\b 匹配的是字符之间的一个位置 : 一边是单词(能够被\w匹配到的) ， 另一边是其他内容(被\W匹配到的字符)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">the cat scattered his food</span><br><span class="line">正则：</span><br><span class="line">\bcat\b</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+ 
       <!-- reward -->
       
     </div>
@@ -170,6 +231,8 @@
     
     <footer class="article-footer">
        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li></ul>
+
     </footer>
   </div>
 
@@ -310,7 +373,7 @@
 
     
     <article
-  id="post-模板 - 副本"
+  id="post-删除链表的倒数第N个节点"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -321,7 +384,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/06/27/%E6%A8%A1%E6%9D%BF%20-%20%E5%89%AF%E6%9C%AC/"
+  <a class="article-title" href="/2021/06/27/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/"
     >删除链表倒数第N个节点</a> 
 </h2>
  
@@ -330,7 +393,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/06/27/%E6%A8%A1%E6%9D%BF%20-%20%E5%89%AF%E6%9C%AC/" class="article-date">
+      <a href="/2021/06/27/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="article-date">
   <time datetime="2021-06-26T16:00:00.000Z" itemprop="datePublished">2021-06-27</time>
 </a> 
   <div class="article-category">
@@ -365,7 +428,7 @@
 <p><img src="/img/%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/4.jpg" alt="4"></p>
 </li>
 </ul>
-<h1 id="java代码"><a href="#java代码" class="headerlink" title="java代码"></a>java代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode dummpyNode = <span class="keyword">new</span> ListNode();</span><br><span class="line"></span><br><span class="line">        dummpyNode.next = head;</span><br><span class="line">        ListNode fast = dummpyNode ;</span><br><span class="line">        ListNode slow = dummpyNode;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n+<span class="number">1</span>; i++)&#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow.next = slow.next.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummpyNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="java代码"><a href="#java代码" class="headerlink" title="java代码"></a>java代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode dummpyNode = <span class="keyword">new</span> ListNode();</span><br><span class="line"></span><br><span class="line">        dummpyNode.next = head;</span><br><span class="line">        ListNode fast = dummpyNode ;</span><br><span class="line">        ListNode slow = dummpyNode;</span><br><span class="line">        <span class="comment">//fast先走</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n+<span class="number">1</span>; i++)&#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//一起往前走</span></span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//删除节点</span></span><br><span class="line">        slow.next = slow.next.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummpyNode.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="代码细节"><a href="#代码细节" class="headerlink" title="代码细节"></a>代码细节</h1><p>上述fast先走n+1步，再和slow一起走，所以为啥是n+1，n可以吗？</p>
 <p>答案是肯定的，先走n步完全是可以的，只不过这样走到最后slow就到了要删除的节点上，所以要在while里多做一步处理，记录下slow前面的节点，方便最后删除。</p>

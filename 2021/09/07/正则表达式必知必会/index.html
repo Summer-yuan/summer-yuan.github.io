@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>费马和帕斯卡系统 |  一两</title>
+      <title>正则表达式必知必会 |  一两</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -47,7 +47,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-杂书/费马和帕斯克"
+  id="post-正则表达式必知必会"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -58,7 +58,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  费马和帕斯卡系统
+  正则表达式必知必会
 </h1>
  
 
@@ -66,11 +66,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/06/27/%E6%9D%82%E4%B9%A6/%E8%B4%B9%E9%A9%AC%E5%92%8C%E5%B8%95%E6%96%AF%E5%85%8B/" class="article-date">
-  <time datetime="2021-06-26T16:00:00.000Z" itemprop="datePublished">2021-06-27</time>
+      <a href="/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-date">
+  <time datetime="2021-09-06T16:00:00.000Z" itemprop="datePublished">2021-09-07</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E4%B9%A6/">杂书</a>
+    <a class="article-category-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
   </div>
   
 <div class="word_count">
@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">387</span>
+            <span class="post-count">716</span>
         </span>
     </span>
 
@@ -87,23 +87,67 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>《费马和帕斯卡系统的思维模型》；任何思维模型，在了解了其背后的原理后，都需要自己在实际生活中刻意去练习。费马帕斯卡系统给我们的启示是要用实际的概率去分析和做决策，不能以表面现象和自身经验去下结论。查理芒格说，我们只有把这些基础的不自然的数学概率方法变成我们生活的一部分，才不会把自己的优势拱手让给别人。</p>
-<p>在知识、能力、努力、耐心这些所有的品质中，查理芒格最看重的是理性。查理芒格说：“你必须看到这个世界真实的样子，而不是你以为的样子、或者你希望的样子，只有这样你才能做出正确的选择。”费马帕斯卡系统就是认识真实世界的基本工具。<br><strong>费马帕斯卡系统是现代概率论的基础，来自一个概率论中的经典问题——点数问题（Problem of points），也叫赌注分配。</strong></p>
-<p><img src="/img/%E8%B4%B9%E9%A9%AC%E5%92%8C%E5%B8%95%E6%96%AF%E5%8D%A1%E7%B3%BB%E7%BB%9F.jpg" alt="费马和帕斯卡"></p>
-<p><strong>如果你们懂得基本的心理学原理，就能理解人们做不到这一点的原因。其实很简单：大脑的神经系统是经过长期的基因和文化进化而来的，它并不是费马—帕斯卡系统，它使用的是非常粗略而便捷的估算，里面有一点费马—帕斯卡系统的元素，但是不精准。—— 查理.芒格</strong></p>
+  <h1 id="4、使用元字符"><a href="#4、使用元字符" class="headerlink" title="4、使用元字符"></a>4、使用元字符</h1><p>元字符：正则表达式中有着特殊含义的字符(如’ .‘表示任意字符,[]表示字符区间)，这些字符要表达其本身意思的话，就要使用反斜杠字符\来转义</p>
+<h2 id="4-1-匹配空白字符"><a href="#4-1-匹配空白字符" class="headerlink" title="4.1 匹配空白字符"></a>4.1 匹配空白字符</h2><p>\n 换行符</p>
+<p>\r 回车符</p>
+<p>\t 制表符</p>
+<p>windows中文本行结束标志为 \r\n</p>
+<p>\r  是指针回到本行的首字符处</p>
+<p>\n 是跳到下一行原处</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/amqvje/article/details/38370681">\r\n解释</a></p>
+<h3 id="4-2-匹配特定的字符类型"><a href="#4-2-匹配特定的字符类型" class="headerlink" title="4.2 匹配特定的字符类型"></a>4.2 匹配特定的字符类型</h3><h3 id="4-2-1-匹配数字"><a href="#4-2-1-匹配数字" class="headerlink" title="4.2.1 匹配数字"></a>4.2.1 匹配数字</h3><p>[0-9] 匹配任何一个数字  等价于 \d</p>
+<p>[^0-9] 等价于\D</p>
+<h3 id="4-2-2-匹配字母数字"><a href="#4-2-2-匹配字母数字" class="headerlink" title="4.2.2 匹配字母数字"></a>4.2.2 匹配字母数字</h3><p>[a-zA-Z0-9_]   任何一个字母数字字符或下划线  等价于 \w</p>
+<p>[^a-zA-Z0-9_]  \W</p>
+<p>4.2.3 匹配空白字符</p>
+<p>[\f\n\r\t\v] 任何一个空白字符 等价于 \s</p>
+<p>[^\f\n\r\t\v] 任何一个非空白字符 等价于 \S</p>
+<h1 id="5、重复匹配"><a href="#5、重复匹配" class="headerlink" title="5、重复匹配"></a>5、重复匹配</h1><p>+是一个元字符</p>
+<h2 id="5-1匹配一个或多个字符"><a href="#5-1匹配一个或多个字符" class="headerlink" title="5.1匹配一个或多个字符"></a>5.1匹配一个或多个字符</h2><p>[a-zA-Z0-9_]+   或 \w+</p>
+<p>邮箱地址 ： \w+@\w+.\w+</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\w+@\w+\.\w+</span><br></pre></td></tr></table></figure>
+
+<p>但不能识别全 <a href="mailto:&#98;&#x65;&#x6e;&#46;&#102;&#111;&#x72;&#x74;&#64;&#x66;&#x6f;&#x72;&#116;&#x2e;&#99;&#111;&#x6d;">&#98;&#x65;&#x6e;&#46;&#102;&#111;&#x72;&#x74;&#64;&#x66;&#x6f;&#x72;&#116;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>匹配字符集合: [\w.]  字符集中. + 这样的元字符不需要转义，被解释为普通字符。但转义了也没有坏处，效果是一样的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[\w.]+@[\w.]+\.\w+</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-1-2匹配零个或多个字符"><a href="#5-1-2匹配零个或多个字符" class="headerlink" title="5.1.2匹配零个或多个字符"></a>5.1.2匹配零个或多个字符</h2><p>+至少要匹配一个目标字符</p>
+<p>*匹配一个可有可无的字符</p>
+<p>[\w.]* 匹配.或字母数字字符的零次或多次重复</p>
+<p><a href="mailto:&#x2e;&#98;&#x65;&#110;&#64;&#49;&#x35;&#51;&#x2e;&#x63;&#x6f;&#x6d;">&#x2e;&#98;&#x65;&#110;&#64;&#49;&#x35;&#51;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\w+[\w.]*@[\w.]+\.\w+</span><br></pre></td></tr></table></figure>
+
+<p>过滤掉邮箱前面的.</p>
+<h2 id="5-1-3匹配零个或一个字符"><a href="#5-1-3匹配零个或一个字符" class="headerlink" title="5.1.3匹配零个或一个字符"></a>5.1.3匹配零个或一个字符</h2><p>? 匹配可选文本，就算文本没有出现，也可匹配。但是与+不同， ？只能匹配某个字符（或字符集合）的零次或一次出现，最多不超过一次。</p>
+<p>匹配URL地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https?:\/\/[\w.\/]+</span><br></pre></td></tr></table></figure>
+
+<p>可匹配http://，也可匹配https:// 。</p>
+<h2 id="5-2匹配的重复次数"><a href="#5-2匹配的重复次数" class="headerlink" title="5.2匹配的重复次数"></a>5.2匹配的重复次数</h2><p>{和}是元字符</p>
+<h2 id="5-2-1-具体的重复匹配"><a href="#5-2-1-具体的重复匹配" class="headerlink" title="5.2.1 具体的重复匹配"></a>5.2.1 具体的重复匹配</h2><p>{3} 意味着匹配前一个字符（或字符集合）3次，如果只能匹配两次，则不算匹配成功。</p>
+<h2 id="5-2-2区间范围"><a href="#5-2-2区间范围" class="headerlink" title="5.2.2区间范围"></a>5.2.2区间范围</h2><p>{2,4} 最少匹配2次，最多匹配4次</p>
+<p>重复范围也可以从0开始，{0,3}表示重复次数可以是0,1,2,3.  ？等效于{0,1}</p>
+<h2 id="5-2-3-匹配-至少重复多少次"><a href="#5-2-3-匹配-至少重复多少次" class="headerlink" title="5.2.3 匹配 至少重复多少次"></a>5.2.3 匹配 至少重复多少次</h2><p>{3,} 表示至少重复3次</p>
+<p>+在功能上等效于{1,} </p>
+<h1 id="6、位置匹配"><a href="#6、位置匹配" class="headerlink" title="6、位置匹配"></a>6、位置匹配</h1><h2 id="6-1-边界-boundary"><a href="#6-1-边界-boundary" class="headerlink" title="6.1 边界 boundary"></a>6.1 边界 boundary</h2><p>元字符 ： \b</p>
+<h2 id="6-2-单词边界"><a href="#6-2-单词边界" class="headerlink" title="6.2 单词边界"></a>6.2 单词边界</h2><p>\b 匹配的是字符之间的一个位置 : 一边是单词(能够被\w匹配到的) ， 另一边是其他内容(被\W匹配到的字符)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">the cat scattered his food</span><br><span class="line">正则：</span><br><span class="line">\bcat\b</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
  
       <!-- reward -->
       
@@ -168,12 +212,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/06/27/%E6%9D%82%E4%B9%A6/%E8%B4%B9%E9%A9%AC%E5%92%8C%E5%B8%95%E6%96%AF%E5%85%8B/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4%E6%A8%A1%E5%9E%8B/" rel="tag">思维模型</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li></ul>
 
     </footer>
   </div>
@@ -181,19 +225,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            正则表达式必知必会
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/06/27/%E5%80%92%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="article-nav-link">
+      <a href="/2021/06/27/%E6%9D%82%E4%B9%A6/%E8%B4%B9%E9%A9%AC%E5%92%8C%E5%B8%95%E6%96%AF%E5%85%8B/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">反转链表</div>
+        <div class="article-nav-title">费马和帕斯卡系统</div>
       </a>
     
   </nav>
