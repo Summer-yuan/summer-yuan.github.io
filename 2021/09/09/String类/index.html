@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>正则表达式必知必会 |  一两</title>
+      <title>String类 |  一两</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -47,7 +47,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-正则表达式必知必会"
+  id="post-String类"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -58,7 +58,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  正则表达式必知必会
+  String类
 </h1>
  
 
@@ -66,11 +66,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-date">
-  <time datetime="2021-09-06T16:00:00.000Z" itemprop="datePublished">2021-09-07</time>
+      <a href="/2021/09/09/String%E7%B1%BB/" class="article-date">
+  <time datetime="2021-09-08T16:00:00.000Z" itemprop="datePublished">2021-09-09</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+    <a class="article-category-link" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a>
   </div>
   
 <div class="word_count">
@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">716</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -87,66 +87,20 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">5 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="4、使用元字符"><a href="#4、使用元字符" class="headerlink" title="4、使用元字符"></a>4、使用元字符</h1><p>元字符：正则表达式中有着特殊含义的字符(如’ .‘表示任意字符,[]表示字符区间)，这些字符要表达其本身意思的话，就要使用反斜杠字符\来转义</p>
-<h2 id="4-1-匹配空白字符"><a href="#4-1-匹配空白字符" class="headerlink" title="4.1 匹配空白字符"></a>4.1 匹配空白字符</h2><p>\n 换行符</p>
-<p>\r 回车符</p>
-<p>\t 制表符</p>
-<p>windows中文本行结束标志为 \r\n</p>
-<p>\r  是指针回到本行的首字符处</p>
-<p>\n 是跳到下一行原处</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/amqvje/article/details/38370681">\r\n解释</a></p>
-<h3 id="4-2-匹配特定的字符类型"><a href="#4-2-匹配特定的字符类型" class="headerlink" title="4.2 匹配特定的字符类型"></a>4.2 匹配特定的字符类型</h3><h3 id="4-2-1-匹配数字"><a href="#4-2-1-匹配数字" class="headerlink" title="4.2.1 匹配数字"></a>4.2.1 匹配数字</h3><p>[0-9] 匹配任何一个数字  等价于 \d</p>
-<p>[^0-9] 等价于\D</p>
-<h3 id="4-2-2-匹配字母数字"><a href="#4-2-2-匹配字母数字" class="headerlink" title="4.2.2 匹配字母数字"></a>4.2.2 匹配字母数字</h3><p>[a-zA-Z0-9_]   任何一个字母数字字符或下划线  等价于 \w</p>
-<p>[^a-zA-Z0-9_]  \W</p>
-<p>4.2.3 匹配空白字符</p>
-<p>[\f\n\r\t\v] 任何一个空白字符 等价于 \s</p>
-<p>[^\f\n\r\t\v] 任何一个非空白字符 等价于 \S</p>
-<h1 id="5、重复匹配"><a href="#5、重复匹配" class="headerlink" title="5、重复匹配"></a>5、重复匹配</h1><p>+是一个元字符</p>
-<h2 id="5-1匹配一个或多个字符"><a href="#5-1匹配一个或多个字符" class="headerlink" title="5.1匹配一个或多个字符"></a>5.1匹配一个或多个字符</h2><p>[a-zA-Z0-9_]+   或 \w+</p>
-<p>邮箱地址 ： \w+@\w+.\w+</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\w+@\w+\.\w+</span><br></pre></td></tr></table></figure>
-
-<p>但不能识别全 <a href="mailto:&#98;&#x65;&#x6e;&#46;&#102;&#111;&#x72;&#x74;&#64;&#x66;&#x6f;&#x72;&#116;&#x2e;&#99;&#111;&#x6d;">&#98;&#x65;&#x6e;&#46;&#102;&#111;&#x72;&#x74;&#64;&#x66;&#x6f;&#x72;&#116;&#x2e;&#99;&#111;&#x6d;</a></p>
-<p>匹配字符集合: [\w.]  字符集中. + 这样的元字符不需要转义，被解释为普通字符。但转义了也没有坏处，效果是一样的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[\w.]+@[\w.]+\.\w+</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-1-2匹配零个或多个字符"><a href="#5-1-2匹配零个或多个字符" class="headerlink" title="5.1.2匹配零个或多个字符"></a>5.1.2匹配零个或多个字符</h2><p>+至少要匹配一个目标字符</p>
-<p>*匹配一个可有可无的字符</p>
-<p>[\w.]* 匹配.或字母数字字符的零次或多次重复</p>
-<p><a href="mailto:&#x2e;&#98;&#x65;&#110;&#64;&#49;&#x35;&#51;&#x2e;&#x63;&#x6f;&#x6d;">&#x2e;&#98;&#x65;&#110;&#64;&#49;&#x35;&#51;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\w+[\w.]*@[\w.]+\.\w+</span><br></pre></td></tr></table></figure>
-
-<p>过滤掉邮箱前面的.</p>
-<h2 id="5-1-3匹配零个或一个字符"><a href="#5-1-3匹配零个或一个字符" class="headerlink" title="5.1.3匹配零个或一个字符"></a>5.1.3匹配零个或一个字符</h2><p>? 匹配可选文本，就算文本没有出现，也可匹配。但是与+不同， ？只能匹配某个字符（或字符集合）的零次或一次出现，最多不超过一次。</p>
-<p>匹配URL地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https?:\/\/[\w.\/]+</span><br></pre></td></tr></table></figure>
-
-<p>可匹配http://，也可匹配https:// 。</p>
-<h2 id="5-2匹配的重复次数"><a href="#5-2匹配的重复次数" class="headerlink" title="5.2匹配的重复次数"></a>5.2匹配的重复次数</h2><p>{和}是元字符</p>
-<h2 id="5-2-1-具体的重复匹配"><a href="#5-2-1-具体的重复匹配" class="headerlink" title="5.2.1 具体的重复匹配"></a>5.2.1 具体的重复匹配</h2><p>{3} 意味着匹配前一个字符（或字符集合）3次，如果只能匹配两次，则不算匹配成功。</p>
-<h2 id="5-2-2区间范围"><a href="#5-2-2区间范围" class="headerlink" title="5.2.2区间范围"></a>5.2.2区间范围</h2><p>{2,4} 最少匹配2次，最多匹配4次</p>
-<p>重复范围也可以从0开始，{0,3}表示重复次数可以是0,1,2,3.  ？等效于{0,1}</p>
-<h2 id="5-2-3-匹配-至少重复多少次"><a href="#5-2-3-匹配-至少重复多少次" class="headerlink" title="5.2.3 匹配 至少重复多少次"></a>5.2.3 匹配 至少重复多少次</h2><p>{3,} 表示至少重复3次</p>
-<p>+在功能上等效于{1,} </p>
-<h1 id="6、位置匹配"><a href="#6、位置匹配" class="headerlink" title="6、位置匹配"></a>6、位置匹配</h1><h2 id="6-1-边界-boundary"><a href="#6-1-边界-boundary" class="headerlink" title="6.1 边界 boundary"></a>6.1 边界 boundary</h2><p>元字符 ： \b</p>
-<h2 id="6-2-单词边界"><a href="#6-2-单词边界" class="headerlink" title="6.2 单词边界"></a>6.2 单词边界</h2><p>\b 匹配的是字符之间的一个位置 : 一边是单词(能够被\w匹配到的) ， 另一边是其他内容(被\W匹配到的字符)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">the cat scattered his food</span><br><span class="line">正则：</span><br><span class="line">\bcat\b</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">String</span><br><span class="line">	什么是String？</span><br><span class="line">		字符串</span><br><span class="line">		字符串不变; 它们的值在创建后不能被更改(字符串是长度不可以改变字符序列)。</span><br><span class="line">		</span><br><span class="line">		String是一个引用数据类型</span><br><span class="line">		是jdk给我们提供好的一个现成的String类</span><br><span class="line">		<span class="string">&quot;abc&quot;</span>既是一个字符串常量，也是一个字符串的对象(实例)</span><br><span class="line">		</span><br><span class="line">	常见的构造方法？</span><br><span class="line">		1.public String()：初始化一个新创建的 String 对象，使其表示一个空字符序列</span><br><span class="line">		2.public String(byte[] bytes)：将字节数组转换成字符串</span><br><span class="line">		3.public String(byte[] bytes,int offset,int length)：将字节数组的一部分转换成字符串</span><br><span class="line">		4.public String(char[] value)：将字符数组转换成字符串</span><br><span class="line">		5.public String(char[] value,int offset,int count)：将字符数组的一部分转换成字符串</span><br><span class="line">		6.public String(String original)：初始化一个新创建的 String 对象，使其表示一个与参数相同的字符序列</span><br><span class="line">		7.String s = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">		</span><br><span class="line">		常见问题？</span><br><span class="line">			问题1：</span><br><span class="line">				通过new出来的String对象和直接赋值的String对象有什么区别？</span><br><span class="line">					通过new出来的，在内存中有2个对象</span><br><span class="line">					通过直接赋值的对象，在内存只有1个对象</span><br><span class="line">					</span><br><span class="line">			问题2：</span><br><span class="line">				String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s2 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s3 = new String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">				System.out.println(s1 == s2);//<span class="literal">true</span></span><br><span class="line">				System.out.println(s1 == s3);//<span class="literal">false</span></span><br><span class="line">				</span><br><span class="line">			问题3：</span><br><span class="line">				String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s2 = <span class="string">&quot;ab&quot;</span>;</span><br><span class="line">				String s3 = s2 + <span class="string">&quot;c&quot;</span>;</span><br><span class="line">				System.out.println(s1 == s3);//<span class="literal">false</span></span><br><span class="line">				</span><br><span class="line">			问题4：</span><br><span class="line">				String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s2 = <span class="string">&quot;ab&quot;</span> + <span class="string">&quot;c&quot;</span>;</span><br><span class="line">				System.out.println(s1 == s2);//<span class="literal">true</span></span><br><span class="line">	</span><br><span class="line">	常见的成员方法？</span><br><span class="line">		1.public char charAt(int index)：获取指定索引对应的字符</span><br><span class="line">		2.public int compareTo(String anotherString)：按字典顺序比较两个字符串。</span><br><span class="line">			<span class="string">&quot;abcde&quot;</span> -&gt; &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125;</span><br><span class="line">			<span class="string">&quot;bccde&quot;</span> -&gt; &#123;<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125;</span><br><span class="line">			对位比较，如果对位相等，去下一位再继续比</span><br><span class="line">		3.public String concat(String str)：字符串的拼接</span><br><span class="line">		4.public boolean contains(String s)：判断是否包含指定的字符串</span><br><span class="line">		5.public String toLowerCase()：将大写字母转换成小写字母</span><br><span class="line">		6.public String toUpperCase()：将小写字母转换成大写字母</span><br><span class="line">		7.public boolean equals(Object anObject)：比较两个字符串的内容是否一致</span><br><span class="line">			<span class="string">&quot;abcde&quot;</span> -&gt; &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125; arr1[1]</span><br><span class="line">			<span class="string">&quot;abcde&quot;</span> -&gt; &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125; arr2[1]</span><br><span class="line">		8.public boolean equalsIgnoreCase(String anotherString)：比较两个字符串的内容是否一致(不区分大小写)</span><br><span class="line">		9.public int indexOf(int ch)：获取指定字符对应的索引值，如果找不到返回-1</span><br><span class="line">		10.public int indexOf(String str)：获取指定字符串对应的索引值，如果找不到返回-1</span><br><span class="line">		11.public int lastIndexOf(int ch)：获取指定字符对应的最后第一次出现的位置的索引，如果找不到返回-1</span><br><span class="line">		12.public boolean isEmpty()：判断字符串是否为空串</span><br><span class="line">		13.public int length()：获取字符串的长度</span><br><span class="line">		14.public boolean startsWith(String prefix)：判断是否以指定的字符串为前缀的，开头</span><br><span class="line">		15.public boolean endsWith(String suffix)：判断是否以指定的字符串为后缀的，结尾</span><br><span class="line">		16.public String replace(char oldChar,char newChar)：替换字符</span><br><span class="line">		17.public byte[] getBytes():将字符串转换成字节数组</span><br><span class="line">		18.public char[] toCharArray()：将字符串转换成字符数组</span><br><span class="line">		19.public String trim()：去除字符串的前后空格</span><br><span class="line">		20.public String substring(int beginIndex):截取，从指定的索引开始截取到末尾</span><br><span class="line">		21.public String substring(int beginIndex,int endIndex)：</span><br><span class="line">						截取，从指定的beginIndex索引开始截取到endIndex(包头不包尾)</span><br><span class="line">		22.public String[] split(String regex)：按照指定的符号进行切割，根据给定正则表达式的匹配拆分此字符串。</span><br><span class="line">			正则表达式：是一个字符串，在字符串里面写一些规则，可以帮助对指定的String数据进行校验</span><br><span class="line">		23.public String replace(String target,String replacement)：替换子字符串</span><br><span class="line">		</span><br><span class="line">	练习：</span><br><span class="line">		需求：遍历字符串</span><br><span class="line">			方式一：</span><br><span class="line">				String s = <span class="string">&quot;abcde&quot;</span>;</span><br><span class="line">				String[] strs = s.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">				<span class="keyword">for</span>(int i = 0; i &lt; strs.length; i++) &#123;</span><br><span class="line">					System.out.println(strs[i]);</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">			方式二：</span><br><span class="line">				String s = <span class="string">&quot;abcde&quot;</span>;</span><br><span class="line">				<span class="keyword">for</span>(int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">					char ch = s.charAt(i);</span><br><span class="line">					System.out.println(ch);</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">			方式三：</span><br><span class="line">				String s = <span class="string">&quot;abcde&quot;</span>;</span><br><span class="line">				char[] chs = s.toCharArray();</span><br><span class="line">				<span class="keyword">for</span>(int i = 0; i &lt; chs.length; i++) &#123;</span><br><span class="line">					System.out.println(chs[i]);</span><br><span class="line">				&#125;</span><br><span class="line">		</span><br><span class="line">		需求：已知字符串String s = <span class="string">&quot;adfasADFJASadfljdasjSFADASLJadfjaldj&quot;</span>;将首字母变大写，其余都变小写？</span><br><span class="line">			System.out.println(s.substring(0, 1).toUpperCase().concat(s.substring(1).toLowerCase()));</span><br><span class="line">			</span><br></pre></td></tr></table></figure>
 
  
       <!-- reward -->
@@ -212,12 +166,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/09/09/String%E7%B1%BB/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
 
     </footer>
   </div>
@@ -225,19 +179,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/09/09/String%E7%B1%BB/" class="article-nav-link">
+      <a href="/2021/09/09/%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            String类
+            java反射机制
           
         </div>
       </a>
     
     
-      <a href="/2021/06/27/%E6%9D%82%E4%B9%A6/%E8%B4%B9%E9%A9%AC%E5%92%8C%E5%B8%95%E6%96%AF%E5%85%8B/" class="article-nav-link">
+      <a href="/2021/09/07/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">费马和帕斯卡系统</div>
+        <div class="article-nav-title">正则表达式必知必会</div>
       </a>
     
   </nav>

@@ -199,6 +199,61 @@
 
     
     <article
+  id="post-String类"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/09/String%E7%B1%BB/"
+    >String类</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/09/09/String%E7%B1%BB/" class="article-date">
+  <time datetime="2021-09-08T16:00:00.000Z" itemprop="datePublished">2021-09-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">String</span><br><span class="line">	什么是String？</span><br><span class="line">		字符串</span><br><span class="line">		字符串不变; 它们的值在创建后不能被更改(字符串是长度不可以改变字符序列)。</span><br><span class="line">		</span><br><span class="line">		String是一个引用数据类型</span><br><span class="line">		是jdk给我们提供好的一个现成的String类</span><br><span class="line">		<span class="string">&quot;abc&quot;</span>既是一个字符串常量，也是一个字符串的对象(实例)</span><br><span class="line">		</span><br><span class="line">	常见的构造方法？</span><br><span class="line">		1.public String()：初始化一个新创建的 String 对象，使其表示一个空字符序列</span><br><span class="line">		2.public String(byte[] bytes)：将字节数组转换成字符串</span><br><span class="line">		3.public String(byte[] bytes,int offset,int length)：将字节数组的一部分转换成字符串</span><br><span class="line">		4.public String(char[] value)：将字符数组转换成字符串</span><br><span class="line">		5.public String(char[] value,int offset,int count)：将字符数组的一部分转换成字符串</span><br><span class="line">		6.public String(String original)：初始化一个新创建的 String 对象，使其表示一个与参数相同的字符序列</span><br><span class="line">		7.String s = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">		</span><br><span class="line">		常见问题？</span><br><span class="line">			问题1：</span><br><span class="line">				通过new出来的String对象和直接赋值的String对象有什么区别？</span><br><span class="line">					通过new出来的，在内存中有2个对象</span><br><span class="line">					通过直接赋值的对象，在内存只有1个对象</span><br><span class="line">					</span><br><span class="line">			问题2：</span><br><span class="line">				String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s2 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s3 = new String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">				System.out.println(s1 == s2);//<span class="literal">true</span></span><br><span class="line">				System.out.println(s1 == s3);//<span class="literal">false</span></span><br><span class="line">				</span><br><span class="line">			问题3：</span><br><span class="line">				String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s2 = <span class="string">&quot;ab&quot;</span>;</span><br><span class="line">				String s3 = s2 + <span class="string">&quot;c&quot;</span>;</span><br><span class="line">				System.out.println(s1 == s3);//<span class="literal">false</span></span><br><span class="line">				</span><br><span class="line">			问题4：</span><br><span class="line">				String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line">				String s2 = <span class="string">&quot;ab&quot;</span> + <span class="string">&quot;c&quot;</span>;</span><br><span class="line">				System.out.println(s1 == s2);//<span class="literal">true</span></span><br><span class="line">	</span><br><span class="line">	常见的成员方法？</span><br><span class="line">		1.public char charAt(int index)：获取指定索引对应的字符</span><br><span class="line">		2.public int compareTo(String anotherString)：按字典顺序比较两个字符串。</span><br><span class="line">			<span class="string">&quot;abcde&quot;</span> -&gt; &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125;</span><br><span class="line">			<span class="string">&quot;bccde&quot;</span> -&gt; &#123;<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125;</span><br><span class="line">			对位比较，如果对位相等，去下一位再继续比</span><br><span class="line">		3.public String concat(String str)：字符串的拼接</span><br><span class="line">		4.public boolean contains(String s)：判断是否包含指定的字符串</span><br><span class="line">		5.public String toLowerCase()：将大写字母转换成小写字母</span><br><span class="line">		6.public String toUpperCase()：将小写字母转换成大写字母</span><br><span class="line">		7.public boolean equals(Object anObject)：比较两个字符串的内容是否一致</span><br><span class="line">			<span class="string">&quot;abcde&quot;</span> -&gt; &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125; arr1[1]</span><br><span class="line">			<span class="string">&quot;abcde&quot;</span> -&gt; &#123;<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>&#125; arr2[1]</span><br><span class="line">		8.public boolean equalsIgnoreCase(String anotherString)：比较两个字符串的内容是否一致(不区分大小写)</span><br><span class="line">		9.public int indexOf(int ch)：获取指定字符对应的索引值，如果找不到返回-1</span><br><span class="line">		10.public int indexOf(String str)：获取指定字符串对应的索引值，如果找不到返回-1</span><br><span class="line">		11.public int lastIndexOf(int ch)：获取指定字符对应的最后第一次出现的位置的索引，如果找不到返回-1</span><br><span class="line">		12.public boolean isEmpty()：判断字符串是否为空串</span><br><span class="line">		13.public int length()：获取字符串的长度</span><br><span class="line">		14.public boolean startsWith(String prefix)：判断是否以指定的字符串为前缀的，开头</span><br><span class="line">		15.public boolean endsWith(String suffix)：判断是否以指定的字符串为后缀的，结尾</span><br><span class="line">		16.public String replace(char oldChar,char newChar)：替换字符</span><br><span class="line">		17.public byte[] getBytes():将字符串转换成字节数组</span><br><span class="line">		18.public char[] toCharArray()：将字符串转换成字符数组</span><br><span class="line">		19.public String trim()：去除字符串的前后空格</span><br><span class="line">		20.public String substring(int beginIndex):截取，从指定的索引开始截取到末尾</span><br><span class="line">		21.public String substring(int beginIndex,int endIndex)：</span><br><span class="line">						截取，从指定的beginIndex索引开始截取到endIndex(包头不包尾)</span><br><span class="line">		22.public String[] split(String regex)：按照指定的符号进行切割，根据给定正则表达式的匹配拆分此字符串。</span><br><span class="line">			正则表达式：是一个字符串，在字符串里面写一些规则，可以帮助对指定的String数据进行校验</span><br><span class="line">		23.public String replace(String target,String replacement)：替换子字符串</span><br><span class="line">		</span><br><span class="line">	练习：</span><br><span class="line">		需求：遍历字符串</span><br><span class="line">			方式一：</span><br><span class="line">				String s = <span class="string">&quot;abcde&quot;</span>;</span><br><span class="line">				String[] strs = s.split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">				<span class="keyword">for</span>(int i = 0; i &lt; strs.length; i++) &#123;</span><br><span class="line">					System.out.println(strs[i]);</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">			方式二：</span><br><span class="line">				String s = <span class="string">&quot;abcde&quot;</span>;</span><br><span class="line">				<span class="keyword">for</span>(int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">					char ch = s.charAt(i);</span><br><span class="line">					System.out.println(ch);</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">			方式三：</span><br><span class="line">				String s = <span class="string">&quot;abcde&quot;</span>;</span><br><span class="line">				char[] chs = s.toCharArray();</span><br><span class="line">				<span class="keyword">for</span>(int i = 0; i &lt; chs.length; i++) &#123;</span><br><span class="line">					System.out.println(chs[i]);</span><br><span class="line">				&#125;</span><br><span class="line">		</span><br><span class="line">		需求：已知字符串String s = <span class="string">&quot;adfasADFJASadfljdasjSFADASLJadfjaldj&quot;</span>;将首字母变大写，其余都变小写？</span><br><span class="line">			System.out.println(s.substring(0, 1).toUpperCase().concat(s.substring(1).toLowerCase()));</span><br><span class="line">			</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/" rel="tag">String</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-正则表达式必知必会"
   class="article article-type-post"
   itemscope
@@ -796,104 +851,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-服务器配置"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/06/16/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/"
-    >服务器配置</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/06/16/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2021-06-16T10:10:59.000Z" itemprop="datePublished">2021-06-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>软件版本：</p>
-<p>Filezilla_3.52.2</p>
-<p>VMware Workstation 15.5 PRO</p>
-<p>SQLyog-13.1.7-0.x64Community</p>
-<h1 id="Linux-安装Mysql-apt-get-版"><a href="#Linux-安装Mysql-apt-get-版" class="headerlink" title="Linux 安装Mysql    apt-get 版"></a>Linux 安装Mysql    apt-get 版</h1><h2 id="更新apt-get"><a href="#更新apt-get" class="headerlink" title="更新apt-get"></a>更新apt-get</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装时可能报错：Could-not-get-lock-var-lib-dpkg-lock-frontend"><a href="#安装时可能报错：Could-not-get-lock-var-lib-dpkg-lock-frontend" class="headerlink" title="安装时可能报错：Could not get lock /var/lib/dpkg/lock-frontend"></a>安装时可能报错：Could not get lock /var/lib/dpkg/lock-frontend</h3><h4 id="原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行"><a href="#原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行" class="headerlink" title="原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行"></a>原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行</h4><h4 id="解决方法：使用ps-和-grep-查找apt-的pid，并使用kill杀掉"><a href="#解决方法：使用ps-和-grep-查找apt-的pid，并使用kill杀掉" class="headerlink" title="解决方法：使用ps 和 grep 查找apt 的pid，并使用kill杀掉"></a>解决方法：使用ps 和 grep 查找apt 的pid，并使用kill杀掉</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">l:~$  ps afx|grep apt</span><br><span class="line">16214 ?        S      0:00  \_ sudo apt install rpm</span><br><span class="line">16215 ?        S      0:01  |   \_ apt install rpm</span><br><span class="line">16721 pts/3    S+     0:00          \_ grep --color=auto apt</span><br><span class="line">l:~$ <span class="built_in">kill</span> 16214</span><br><span class="line">bash: <span class="built_in">kill</span>: (16214) - Operation not permitted</span><br><span class="line">l:~$ sudo <span class="built_in">kill</span> 16214</span><br><span class="line">l:~$ sudo <span class="built_in">kill</span> 16215</span><br></pre></td></tr></table></figure>
-
-<p>再执行安装命令即可！</p>
-<h1 id="FTP互传文件"><a href="#FTP互传文件" class="headerlink" title="FTP互传文件"></a>FTP互传文件</h1><h2 id="Windows下安装FTP客户端"><a href="#Windows下安装FTP客户端" class="headerlink" title="Windows下安装FTP客户端"></a>Windows下安装FTP客户端</h2><p>在FileZilla官网下载安装即可</p>
-<p>连接站点管理器中，端口默认不填，加密选择-只使用明文FTP，用户名密码为Ubuntu用户名密码，字符集选择-强制UTF-8</p>
-<h2 id="Ubuntu下相关配置"><a href="#Ubuntu下相关配置" class="headerlink" title="Ubuntu下相关配置"></a>Ubuntu下相关配置</h2><h3 id="1、开启Ubuntu下的FTP服务"><a href="#1、开启Ubuntu下的FTP服务" class="headerlink" title="1、开启Ubuntu下的FTP服务"></a>1、开启Ubuntu下的FTP服务</h3><p>安装FTP服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br></pre></td></tr></table></figure>
-
-<p>打开配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-
-<p>取消注释</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br></pre></td></tr></table></figure>
-
-<p>保存退出，重启FTP</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/vsftpd restart</span><br></pre></td></tr></table></figure>
-
-<h1 id="SQLyog连接mysql"><a href="#SQLyog连接mysql" class="headerlink" title="SQLyog连接mysql"></a>SQLyog连接mysql</h1><h2 id="ubuntu开放3306端口"><a href="#ubuntu开放3306端口" class="headerlink" title="ubuntu开放3306端口"></a>ubuntu开放3306端口</h2><h3 id="1、查看端口是否打开"><a href="#1、查看端口是否打开" class="headerlink" title="1、查看端口是否打开"></a>1、查看端口是否打开</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an|grep 3306</span><br></pre></td></tr></table></figure>
-
-<p><img src="/img/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.jpg" alt="端口"></p>
-<h3 id="2、打开mysql配置文件"><a href="#2、打开mysql配置文件" class="headerlink" title="2、打开mysql配置文件"></a>2、打开mysql配置文件</h3><p>将bind-address = 127.0.0.1 注释</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、重启ubuntu"><a href="#3、重启ubuntu" class="headerlink" title="3、重启ubuntu"></a>3、重启ubuntu</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、再次查看端口是否打开"><a href="#4、再次查看端口是否打开" class="headerlink" title="4、再次查看端口是否打开"></a>4、再次查看端口是否打开</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an|grep 3306</span><br></pre></td></tr></table></figure>
-
-<p>此时3306端口已经打开</p>
-<h2 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h2><p>登录： mysql -u root -p &lt;回车&gt;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update mysql.user <span class="built_in">set</span> host = <span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user =<span class="string">&#x27;root&#x27;</span> <span class="built_in">limit</span> 1;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br><span class="line">sudo service mysql start</span><br><span class="line">sudo service mysql stop</span><br></pre></td></tr></table></figure>
-
-<p>重启mysql</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart </span><br></pre></td></tr></table></figure>
-
-<p>到此，可以在任何主机连接此mysql数据库服务器了</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
 
     </footer>
   </div>

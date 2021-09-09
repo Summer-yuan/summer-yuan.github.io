@@ -144,6 +144,104 @@
     
     
     <article
+  id="post-服务器配置"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/06/16/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/"
+    >服务器配置</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/06/16/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2021-06-16T10:10:59.000Z" itemprop="datePublished">2021-06-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>软件版本：</p>
+<p>Filezilla_3.52.2</p>
+<p>VMware Workstation 15.5 PRO</p>
+<p>SQLyog-13.1.7-0.x64Community</p>
+<h1 id="Linux-安装Mysql-apt-get-版"><a href="#Linux-安装Mysql-apt-get-版" class="headerlink" title="Linux 安装Mysql    apt-get 版"></a>Linux 安装Mysql    apt-get 版</h1><h2 id="更新apt-get"><a href="#更新apt-get" class="headerlink" title="更新apt-get"></a>更新apt-get</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装时可能报错：Could-not-get-lock-var-lib-dpkg-lock-frontend"><a href="#安装时可能报错：Could-not-get-lock-var-lib-dpkg-lock-frontend" class="headerlink" title="安装时可能报错：Could not get lock /var/lib/dpkg/lock-frontend"></a>安装时可能报错：Could not get lock /var/lib/dpkg/lock-frontend</h3><h4 id="原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行"><a href="#原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行" class="headerlink" title="原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行"></a>原因：这说明之前使用apt时出现异常，没有正常关闭，还在运行</h4><h4 id="解决方法：使用ps-和-grep-查找apt-的pid，并使用kill杀掉"><a href="#解决方法：使用ps-和-grep-查找apt-的pid，并使用kill杀掉" class="headerlink" title="解决方法：使用ps 和 grep 查找apt 的pid，并使用kill杀掉"></a>解决方法：使用ps 和 grep 查找apt 的pid，并使用kill杀掉</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">l:~$  ps afx|grep apt</span><br><span class="line">16214 ?        S      0:00  \_ sudo apt install rpm</span><br><span class="line">16215 ?        S      0:01  |   \_ apt install rpm</span><br><span class="line">16721 pts/3    S+     0:00          \_ grep --color=auto apt</span><br><span class="line">l:~$ <span class="built_in">kill</span> 16214</span><br><span class="line">bash: <span class="built_in">kill</span>: (16214) - Operation not permitted</span><br><span class="line">l:~$ sudo <span class="built_in">kill</span> 16214</span><br><span class="line">l:~$ sudo <span class="built_in">kill</span> 16215</span><br></pre></td></tr></table></figure>
+
+<p>再执行安装命令即可！</p>
+<h1 id="FTP互传文件"><a href="#FTP互传文件" class="headerlink" title="FTP互传文件"></a>FTP互传文件</h1><h2 id="Windows下安装FTP客户端"><a href="#Windows下安装FTP客户端" class="headerlink" title="Windows下安装FTP客户端"></a>Windows下安装FTP客户端</h2><p>在FileZilla官网下载安装即可</p>
+<p>连接站点管理器中，端口默认不填，加密选择-只使用明文FTP，用户名密码为Ubuntu用户名密码，字符集选择-强制UTF-8</p>
+<h2 id="Ubuntu下相关配置"><a href="#Ubuntu下相关配置" class="headerlink" title="Ubuntu下相关配置"></a>Ubuntu下相关配置</h2><h3 id="1、开启Ubuntu下的FTP服务"><a href="#1、开启Ubuntu下的FTP服务" class="headerlink" title="1、开启Ubuntu下的FTP服务"></a>1、开启Ubuntu下的FTP服务</h3><p>安装FTP服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br></pre></td></tr></table></figure>
+
+<p>打开配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>取消注释</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br></pre></td></tr></table></figure>
+
+<p>保存退出，重启FTP</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/vsftpd restart</span><br></pre></td></tr></table></figure>
+
+<h1 id="SQLyog连接mysql"><a href="#SQLyog连接mysql" class="headerlink" title="SQLyog连接mysql"></a>SQLyog连接mysql</h1><h2 id="ubuntu开放3306端口"><a href="#ubuntu开放3306端口" class="headerlink" title="ubuntu开放3306端口"></a>ubuntu开放3306端口</h2><h3 id="1、查看端口是否打开"><a href="#1、查看端口是否打开" class="headerlink" title="1、查看端口是否打开"></a>1、查看端口是否打开</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an|grep 3306</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.jpg" alt="端口"></p>
+<h3 id="2、打开mysql配置文件"><a href="#2、打开mysql配置文件" class="headerlink" title="2、打开mysql配置文件"></a>2、打开mysql配置文件</h3><p>将bind-address = 127.0.0.1 注释</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、重启ubuntu"><a href="#3、重启ubuntu" class="headerlink" title="3、重启ubuntu"></a>3、重启ubuntu</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、再次查看端口是否打开"><a href="#4、再次查看端口是否打开" class="headerlink" title="4、再次查看端口是否打开"></a>4、再次查看端口是否打开</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an|grep 3306</span><br></pre></td></tr></table></figure>
+
+<p>此时3306端口已经打开</p>
+<h2 id="开启远程连接"><a href="#开启远程连接" class="headerlink" title="开启远程连接"></a>开启远程连接</h2><p>登录： mysql -u root -p &lt;回车&gt;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update mysql.user <span class="built_in">set</span> host = <span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user =<span class="string">&#x27;root&#x27;</span> <span class="built_in">limit</span> 1;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br><span class="line">sudo service mysql start</span><br><span class="line">sudo service mysql stop</span><br></pre></td></tr></table></figure>
+
+<p>重启mysql</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart </span><br></pre></td></tr></table></figure>
+
+<p>到此，可以在任何主机连接此mysql数据库服务器了</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-数组/数组_移除元素"
   class="article article-type-post"
   itemscope
