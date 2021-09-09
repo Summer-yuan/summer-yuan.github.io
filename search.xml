@@ -467,4 +467,17 @@
         <tag>正则表达式</tag>
       </tags>
   </entry>
+  <entry>
+    <title>java反射机制</title>
+    <url>/2021/09/09/%E5%8F%91%E5%B0%84%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.syl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我吃&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我吃&quot;</span>+s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        <span class="comment">//利用反射机制调用类的方法</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//1、获取类的字节码，字节码是根据源代码生成的，</span></span><br><span class="line">        Class clazz = Class.forName(<span class="string">&quot;com.syl.Person&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2、利用反射机制创建一个对象，以下的api 就是 调用类的无参构造器来实例化对象的</span></span><br><span class="line">        Object obj = clazz.newInstance();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3、反射出 字节码中的某个方法</span></span><br><span class="line">        Method M = clazz.getDeclaredMethod(<span class="string">&quot;eat&quot;</span>);</span><br><span class="line">        Method m = clazz.getDeclaredMethod(<span class="string">&quot;eat&quot;</span>,String.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4、利用反射机制调用方法</span></span><br><span class="line">        <span class="comment">//把m 所代表的方法，当做obj对象的方法来调用</span></span><br><span class="line">        M.invoke(obj);</span><br><span class="line">        m.invoke(obj,<span class="string">&quot;大米饭&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>java基础</category>
+      </categories>
+      <tags>
+        <tag>反射</tag>
+      </tags>
+  </entry>
 </search>
