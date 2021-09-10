@@ -144,6 +144,65 @@
     
     
     <article
+  id="post-Math类"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/10/Math%E7%B1%BB/"
+    >Math类</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/09/10/Math%E7%B1%BB/" class="article-date">
+  <time datetime="2021-09-09T16:00:00.000Z" itemprop="datePublished">2021-09-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>一、什么是Math？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Math 类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数。 </span><br><span class="line">	数学工具类</span><br><span class="line"></span><br><span class="line">	注意：</span><br><span class="line">		工具类</span><br><span class="line">			构造是私有的</span><br><span class="line">			成员方法是静态的</span><br></pre></td></tr></table></figure>
+
+<p>三、常见成员方法？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public static int abs(int a)：获取绝对值</span><br><span class="line">public static int max(int a,int b)：获取最大值</span><br><span class="line">public static int min(int a,int b)：获取最小值</span><br><span class="line">public static double ceil(double a)：向上取整</span><br><span class="line">public static double floor(double a)：向下取整</span><br><span class="line">public static double pow(double a,double b)：a的b次方</span><br><span class="line">public static long round(double a)：四舍五入</span><br><span class="line">public static double random()：返回带正数的 double 值，该值大于等于 0.0 且小于 1.0</span><br><span class="line">[0.0, 1.0)</span><br><span class="line">    练习：	</span><br><span class="line">    需求：随机生成一个1-100之间的正整数？</span><br><span class="line">    (int)(Math.random() * 100) + 1</span><br><span class="line"></span><br><span class="line">    Math.random() -&gt; [0.0, 1.0)</span><br><span class="line">    Math.random()*100 -&gt; [0.0, 100.0)</span><br><span class="line">    (int)(Math.random() * 100) -&gt; [0, 99]</span><br><span class="line">    (int)(Math.random() * 100) + 1 -&gt; [1, 100]</span><br><span class="line"></span><br><span class="line">    需求：随机生成一个9-57之间的正整数？</span><br><span class="line">    57 - 9 = 48</span><br><span class="line">    (int)(Math.random() * 48) + 9 -&gt; [9, 57]</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/" rel="tag">Math</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-反射机制"
   class="article article-type-post"
   itemscope
@@ -778,75 +837,6 @@
 <p>代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> length = nums.length;</span><br><span class="line">      <span class="keyword">int</span> subLength = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> begin = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> result = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">         sum += nums[i];</span><br><span class="line"></span><br><span class="line">         <span class="keyword">while</span>(sum &gt;= target)&#123;</span><br><span class="line">            subLength = i - begin + <span class="number">1</span>;</span><br><span class="line">            result = subLength&lt;result ? subLength : result;</span><br><span class="line">            sum -= nums[begin++];</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-数组/数组_有序数组的平方"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/06/20/%E6%95%B0%E7%BB%84/%E6%95%B0%E7%BB%84_%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/"
-    >有序数组的平方</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/06/20/%E6%95%B0%E7%BB%84/%E6%95%B0%E7%BB%84_%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/" class="article-date">
-  <time datetime="2021-06-20T08:30:39.000Z" itemprop="datePublished">2021-06-20</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/data-struct/">data_struct</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="有序数组的平方"><a href="#有序数组的平方" class="headerlink" title="有序数组的平方"></a>有序数组的平方</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/">https://leetcode-cn.com/problems/squares-of-a-sorted-array/</a></p>
-<p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p>
-<p>示例 1：<br>输入：nums = [-4,-1,0,3,10]<br>输出：[0,1,9,16,100]<br>解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]</p>
-<p>示例 2：<br>输入：nums = [-7,-3,2,3,11]<br>输出：[4,9,9,49,121]</p>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><h2 id="暴力排序"><a href="#暴力排序" class="headerlink" title="暴力排序"></a>暴力排序</h2><p>每个数平方后，重新排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sortedSquares(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.length ; i++)&#123;</span><br><span class="line">            nums[i] = nums[i] * nums[i];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度是O(nlogn+n);</p>
-<h2 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h2><p>i指向起始位置，j指向终止位置</p>
-<p>定义一个新数组result，让k指向result最终位置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果nums[i] * nums[i] &lt; nums[j] * nums[j] 那么result[k--] = nums[j] * nums[j];</span><br><span class="line">如果nums[i] * nums[i] &gt; nums[j] * nums[j] 那么result[k--] = nums[i] * nums[i];</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sortedSquares(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        <span class="keyword">int</span> num = nums.length -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span> , j=num;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(i &lt;= j)&#123; <span class="comment">//i&lt;=j  最后两个比较完，i j 将会相等，这时还要再插入到新的数组中</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i] * nums[i] &lt; nums[j] * nums[j])&#123;</span><br><span class="line">                result[num--] = nums[j] * nums[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                result[num--] = nums[i] * nums[i];</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此时，时间复杂度为O(n)</p>
-<p><strong>双指针，妙啊！</strong></p>
  
       <!-- reward -->
       

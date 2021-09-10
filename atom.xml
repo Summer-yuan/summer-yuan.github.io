@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-09T10:06:10.984Z</updated>
+  <updated>2021-09-10T15:08:50.055Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Math类</title>
+    <link href="http://example.com/2021/09/10/Math%E7%B1%BB/"/>
+    <id>http://example.com/2021/09/10/Math%E7%B1%BB/</id>
+    <published>2021-09-09T16:00:00.000Z</published>
+    <updated>2021-09-10T15:08:50.055Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一、什么是Math？&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="java基础" scheme="http://example.com/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="Math" scheme="http://example.com/tags/Math/"/>
+    
+  </entry>
   
   <entry>
     <title>java反射机制</title>
