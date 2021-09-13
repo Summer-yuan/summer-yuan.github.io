@@ -517,4 +517,22 @@
         <tag>Math</tag>
       </tags>
   </entry>
+  <entry>
+    <title>遍历Map</title>
+    <url>/2021/09/13/%E9%81%8D%E5%8E%86Map/</url>
+    <content><![CDATA[<p>Java遍历Map的四种方式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 循环遍历Map的4中方法</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        map.put(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">        <span class="comment">// 1. entrySet遍历，在键和值都需要时使用（最常用）</span></span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; entry : map.entrySet()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;key = &quot;</span> + entry.getKey() + <span class="string">&quot;, value = &quot;</span> + entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 2. 通过keySet或values来实现遍历,性能略低于第一种方式</span></span><br><span class="line">        <span class="comment">// 遍历map中的键</span></span><br><span class="line">        <span class="keyword">for</span> (Integer key : map.keySet()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;key = &quot;</span> + key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 遍历map中的值</span></span><br><span class="line">        <span class="keyword">for</span> (Integer value : map.values()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;key = &quot;</span> + value);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 3. 使用Iterator遍历</span></span><br><span class="line">        Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; it = map.entrySet().iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            Map.Entry&lt;Integer, Integer&gt; entry = it.next();</span><br><span class="line">            System.out.println(<span class="string">&quot;key = &quot;</span> + entry.getKey() + <span class="string">&quot;, value = &quot;</span> + entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4. java8 Lambda</span></span><br><span class="line">        <span class="comment">// java8提供了Lambda表达式支持，语法看起来更简洁，可以同时拿到key和value，</span></span><br><span class="line">        <span class="comment">// 不过，经测试，性能低于entrySet,所以更推荐用entrySet的方式</span></span><br><span class="line">        map.forEach((key, value) -&gt; &#123;</span><br><span class="line">            System.out.println(key + <span class="string">&quot;:&quot;</span> + value);</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果只是获取key，或者value，推荐使用keySet或者values方式；</p>
+<p>如果同时需要key和value推荐使用entrySet；</p>
+<p>如果需要在遍历过程中删除元素推荐使用Iterator；</p>
+<p>如果需要在遍历过程中增加元素，可以新建一个临时map存放新增的元素，等遍历完毕，再把临时map放到原来的map中。</p>
+]]></content>
+      <categories>
+        <category>java基础</category>
+      </categories>
+      <tags>
+        <tag>Map</tag>
+      </tags>
+  </entry>
 </search>
