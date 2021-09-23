@@ -535,4 +535,48 @@
         <tag>Map</tag>
       </tags>
   </entry>
+  <entry>
+    <title>github上传、提交代码</title>
+    <url>/2021/09/23/github%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="上传本地代码到github"><a href="#上传本地代码到github" class="headerlink" title="上传本地代码到github"></a>上传本地代码到github</h1><p>1、建立本地仓库</p>
+<p>1.1 打开指定文件件，git gui 中 执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>把这个目录变成Git可以管理的仓库，项目文件多了一个隐藏文件夹.git</p>
+<p>1.2 接着，将所有文件添加到仓库，执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<p>1.2 然后，把文件提交到仓库，双引号内为提交注释</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;提交注释&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样，就建好本地仓库了。</p>
+<p>2、关联github仓库</p>
+<p>复制github仓库地址</p>
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git remote add origin https:f*****.com/.git</span><br></pre></td></tr></table></figure>
+
+<p>3、上传本地代码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<h1 id="github提交更改的代码"><a href="#github提交更改的代码" class="headerlink" title="github提交更改的代码"></a>github提交更改的代码</h1><p>更改本地的某一文件代码，对github上的同一个文件代码进行覆盖</p>
+<p>1、先查看更改了哪些文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p>2、添加更改的文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add 更改的文件</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<p>3、提交本地仓库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;提交注释&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>4、push</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
 </search>
