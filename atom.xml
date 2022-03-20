@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-23T07:30:53.233Z</updated>
+  <updated>2022-03-20T12:50:58.163Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最少验毒</title>
+    <link href="http://example.com/2021/12/19/%E6%9C%80%E5%B0%91%E9%AA%8C%E6%AF%92/"/>
+    <id>http://example.com/2021/12/19/%E6%9C%80%E5%B0%91%E9%AA%8C%E6%AF%92/</id>
+    <published>2021-12-18T16:00:00.000Z</published>
+    <updated>2022-03-20T12:50:58.163Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;从一个经典问题开始&lt;/strong&gt;&lt;br&gt;有1000个瓶子里面装满了水，其中1瓶里面被加入了DY，但是滴入DY的水在外观上看和普通水是一模一样的，也就是说这1000个瓶子是分不清哪瓶是装有DY的，除非把装有DY的水喝进肚子里。现在有一只可怜的猪可以用来实验</summary>
+        
+      
+    
+    
+    
+    <category term="算法思想" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/"/>
+    
+    
+    <category term="算法" scheme="http://example.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>github上传、提交代码</title>

@@ -144,6 +144,107 @@
     
     
     <article
+  id="post-最少验毒"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/12/19/%E6%9C%80%E5%B0%91%E9%AA%8C%E6%AF%92/"
+    >最少验毒</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/12/19/%E6%9C%80%E5%B0%91%E9%AA%8C%E6%AF%92/" class="article-date">
+  <time datetime="2021-12-18T16:00:00.000Z" itemprop="datePublished">2021-12-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/">算法思想</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>从一个经典问题开始</strong><br>有1000个瓶子里面装满了水，其中1瓶里面被加入了DY，但是滴入DY的水在外观上看和普通水是一模一样的，也就是说这1000个瓶子是分不清哪瓶是装有DY的，除非把装有DY的水喝进肚子里。现在有一只可怜的猪可以用来实验，将其中一瓶水喂给这只猪喝，如果猪毒发身亡了，说明这瓶水有毒。猪并不需要喝完整瓶水，只需喝到一小口，毒性就会发作，如果水是有毒的话。</p>
+<p>由于只有一只猪，所以我们只能一瓶一瓶的去试验，假如毒发的时间是1分钟，那么我们每喂完一瓶水，就等待一分钟，直到猪死亡。值得注意的是，我们只需喂完999瓶水即可，因为如果猪喝完前面的999瓶水还没有中毒的话，说明最后一瓶一定是有毒的，已经不需要再试验了，同时这只猪也是幸运的，它可以告别死亡的命运。所以，我们最多需要花费999分钟，或者说试验999次才能找到这瓶装有DY的水。</p>
+<p>那么问题来了，如果现在不是1只猪，而是有10只猪可以用来试验，那么你最少可以试验几次能找到这瓶有毒的水？</p>
+<p><strong>答案</strong><br>如果你熟悉二进制的话，会知道答案是只需1次，没错，我们只需让每只猪喝1次水，总共花费1分钟即可找到这瓶有毒的水。<br>猪喝完一瓶水后，它只会有2种状态，要么活着要么死亡，如果把这个状态看作二进制的0和1的话，那么10只猪可以表示2^10^个状态，也就是1024个状态，已经超过1000个瓶子了，所以10只猪的前提下，我们只需试验1次即可。</p>
+<p><strong>原理</strong><br>我们先将这1000瓶水，按0-999编号，前面说过10位二进制已经可以表示1024个状态了，所以完全能够表示这其中的所有编号。下面的表格是用二进制表示的所有编号：</p>
+<p><img src="http://res.ylshi.top/202111251051863.png" alt="image-20211125105109703"></p>
+<p>每只猪占据了一个二进制位，比如编号1的猪(Pig1)就相当于二进制的最低位，Pig10为二进制的最高位。<br>参照这个表格，我们按列给猪喂水，只喂其中标记为1的瓶子。比如Pig1，我们就将瓶子1、瓶子3…瓶子999的水倒出来合到一个桶里，准备喂给猪1，简称桶1。</p>
+<p><img src="http://res.ylshi.top/202111251051704.png" alt="image-20211125105133664"></p>
+<p>同理，我们将瓶子2、瓶子3…瓶子999的水再倒进另一个桶里准备喂给猪2，简称桶2。</p>
+<p><img src="http://res.ylshi.top/202111251051068.png" alt="image-20211125105146032"></p>
+<p>以此类推，我们最终得到了10个桶，然后让10只猪分别喝这10桶水，并记住他们的编号。1分钟后，毒性发作，此时观察这10只猪的状态，根据状态我们就能确定唯一的毒瓶子。<br>比如只有猪3死亡了，而其他猪都活着，那么一定是4号瓶子是有毒的水，因为除了猪3喝过4号瓶子，其他猪都没有。</p>
+<p><img src="http://res.ylshi.top/202111251052019.png" alt="image-20211125105159984"></p>
+<p>同理，如果只有猪4和猪5活着，其他猪都死了，那么一定是编号999的瓶子，因为死去的猪都要一个共通点，就是它们都喝过999号瓶子的水，而没死的猪一定没喝过999号瓶子。</p>
+<p><img src="http://res.ylshi.top/202111251052901.png" alt="image-20211125105216863"></p>
+<p>如果够幸运，所有的猪都没有死，那么有毒的水一定在0号瓶子里面，因为只有这瓶水，所有的猪都没有喝过。<br>所以，根据猪的死亡情况，对照着表格的行，1代表死亡，0代表活着，我们一定能确定一种状态，而这个状态就对应着毒瓶子的编号。</p>
+<p><strong>进阶</strong><br>通过前面的原理分析我们已经知道，在试验1次的情况下，每只猪有2种状态，生或者死，反过来说，如果有2只猪，那么可以最多测试几个瓶子？答案是2^2^=4个瓶子，也就是状态数（2）的猪数量（2）次方。<br>假如我们给4个瓶子编号为0-3，2只猪分别表示A和B，用表格表示：</p>
+<p><img src="http://res.ylshi.top/202111251053827.png" alt="image-20211125105304798"></p>
+<p>根据表格所示，我们让A喝瓶子1和瓶子3，让B喝瓶子2和瓶子3，一轮结束过后，2只猪的死亡状态可以确定唯一的毒瓶子编号。<br>为了深刻印象，同理，3只猪可以测试2^3^=8个瓶子，我们用ABC代表3只猪，表格表示：</p>
+<p><img src="http://res.ylshi.top/202111251053692.png" alt="image-20211125105339664"></p>
+<p>根据表格所示，每只猪对应的喝水情况：</p>
+<p>A：瓶子1，瓶子3，瓶子5，瓶子7<br>B：瓶子2，瓶子3，瓶子6，瓶子7<br>C：瓶子4，瓶子5，瓶子6，瓶子7<br>当你按此分配，得到任意一种猪的生死状态后，即使不对照表格，也能通过排除法得到毒瓶子，有兴趣的朋友可以自行验算。</p>
+<p>前面都是试验1轮的情况，如果是试验2轮呢？那么每只猪就应该会有3种状态，<strong>活着，第1轮死掉、第2轮死掉</strong>。以1只猪为例，那么最多可以测试3^1^=3个瓶子，第1轮喝瓶子1，如果活着进入第2轮喝瓶子2，2轮过后一定能测3个瓶子，由于是3种状态，所以就不能用二进制了，而应该用三进制，表格表示：</p>
+<p><img src="http://res.ylshi.top/202111251054923.png" alt="image-20211125105457896"></p>
+<p>根据表格定义，假如猪最后的状态是状态2，也就是第二轮死掉，那么对应的毒瓶子编号就应该是2。</p>
+<p>再来看2只猪试验2次的情况，同理，根据公式应该是3^2^=9，可以最多测9个瓶子，表格表示为：</p>
+<p><img src="http://res.ylshi.top/202111251055997.png" alt="image-20211125105539968"></p>
+<p>其中，A始终占据数值低位，B始终占据数值高位，试验1中只填充数值为1的位，试验2中只填充数值为2的位，所以喝水策略为:</p>
+<p>第一轮：</p>
+<p>A：瓶子1，瓶子4，瓶子7<br>B：瓶子3，瓶子4，瓶子5<br>第二轮：</p>
+<p>A：瓶子2，瓶子5，瓶子8<br>B：瓶子6，瓶子7，瓶子8<br>以此策略喂猪喝水，我们一定能通过猪最后的状态确定唯一的毒瓶子。</p>
+<p>总结：<br>猪的状态数为试验轮数+1，根据猪的状态数和猪的个数，可以确定最多能测试的瓶子数量，这是一个通用解。</p>
+<p><strong>回到这个题目</strong><br>如果你已经看懂了上面的所有分析，那么这题就变成了一道数学题。<br>猪饮水中毒后会在 m 分钟内死亡，代表一次实验的时间为m分钟，需要在p分钟内找出，则代表可以实验p/m次，也就是是说每只猪可以有p/m+1个状态，而猪的数量是x，瓶子的数量是n，根据公式则有 (p/m+1)^x^=n，根据题目意思，p，m，n都是已知的，我们的目标就是求得满足该不等式 (p/m+1)^x^&gt;=n成立的x的最小整数值。<br>所以，对于这个通用函数，仅仅只需要一行代码：求以(p/m+1)为底，n的对数，并将结果向上取整。</p>
+<pre><code>def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -&gt; int:
+    return math.ceil(math.log(buckets)/math.log(minutesToTest//minutesToDie+1))
+</code></pre>
+<p>利用对数的换底公式，可求任意底数的对数。</p>
+<p>换一种思路：<br>猪的状态数代表着n进制，这个n是已知的，这个问题也可以看作是用n进制表示瓶子总数N需要的最小位数。比如对于十进制数字12，在十进制下表示需要2位，而二进制表示下是1100，则需要4位，现在我们只需将瓶子数转换成n进制表示，同时看会占据多少位即可。</p>
+<pre><code>def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -&gt; int:
+    if buckets==1:
+        return 0
+    def baseN(N, b):
+        return &quot;0&quot; if N == 0 else (baseN(N // b, b).lstrip(&quot;0&quot;) + &quot;0123456789abcdefghijklmnopqrstuvwxyz&quot;[N % b])
+    base=minutesToTest//minutesToDie+1
+    return len(baseN(buckets-1,base))
+</code></pre>
+<p>原文地址：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/poor-pigs/solution/ni-yi-ding-neng-kan-dong-de-ti-jie-xie-d-aanh/">https://leetcode-cn.com/problems/poor-pigs/solution/ni-yi-ding-neng-kan-dong-de-ti-jie-xie-d-aanh/</a></p>
+<p>附：java Math类处理数据方法Math.round() ,Math.ceil() ,Math.floor().</p>
+<p>Math.round()：四舍五入；Math.ceil()：向上取整；Math.floor()：向下取整</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-github操作记录"
   class="article article-type-post"
   itemscope
@@ -778,85 +879,6 @@
 </article>
 
     
-    <article
-  id="post-设计链表"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/06/26/%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8/"
-    >设计链表</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/06/26/%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8/" class="article-date">
-  <time datetime="2021-06-26T15:26:16.000Z" itemprop="datePublished">2021-06-26</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/data-struct/">data_struct</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="设计链表"><a href="#设计链表" class="headerlink" title="设计链表"></a>设计链表</h1><p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/design-linked-list/">https://leetcode-cn.com/problems/design-linked-list/</a></p>
-<p>在链表类中实现这些功能：</p>
-<ul>
-<li>get(index)：获取链表中第 index 个节点的值。如果索引无效，则返回-1。</li>
-<li>addAtHead(val)：在链表的第一个元素<strong>之前</strong>添加一个值为 val 的节点。插入后，新节点将成为链表的第一个节点。</li>
-<li>addAtTail(val)：将值为 val 的节点追加到链表的最后一个元素。</li>
-<li>addAtIndex(index,val)：在链表中的第 index 个节点之前添加值为 val  的节点。如果 index 等于链表的长度，则该节点将附加到链表的末尾。如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。</li>
-<li>deleteAtIndex(index)：如果索引 index 有效，则删除链表中的<strong>第 index 个</strong>节点。</li>
-</ul>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>实现五个接口：</p>
-<ul>
-<li>获取链表第index个节点的数值</li>
-<li>在链表的最前面插入一个节点</li>
-<li>在链表的最后面插入一个节点</li>
-<li>在链表第index个节点前面插入一个节点</li>
-<li>删除链表的第index个节点</li>
-</ul>
-<p><strong>链表操作的两种方式：</strong></p>
-<ol>
-<li>直接使用原来的链表来进行操作。</li>
-<li>设置一个虚拟头结点在进行操作。</li>
-</ol>
-<p>下面采用的设置一个虚拟头结点（这样更方便一些，看代码就会感受出来）。</p>
-<p>java代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    ListNode() &#123;&#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val)&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode(<span class="keyword">int</span> val, ListNode next)&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyLinkedList</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> size; <span class="comment">//链表大小</span></span><br><span class="line">    ListNode dummyHead; <span class="comment">//虚拟头结点</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyLinkedList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        size = <span class="number">0</span> ;</span><br><span class="line">        dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>) ;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= size)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode temp = dummyHead;</span><br><span class="line">        <span class="comment">//注意get for里面的index+1；</span></span><br><span class="line">        <span class="comment">//要获得下标index处的值，必须从dummyHead处走index+1 步 (0至index ) temp才能走到index位置 </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; index + <span class="number">1</span>; ++i)&#123;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> temp.val;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addAtHead</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        ListNode temp = <span class="keyword">new</span> ListNode(val);</span><br><span class="line">        temp.next = dummyHead.next;</span><br><span class="line">        dummyHead.next = temp; <span class="comment">//保持虚拟头结点 的 相对位置</span></span><br><span class="line">        size ++ ;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Append a node of value val to the last element of the linked list. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addAtTail</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        ListNode newNode = <span class="keyword">new</span> ListNode(val);</span><br><span class="line">        ListNode temp = dummyHead;</span><br><span class="line">        <span class="keyword">while</span>(temp.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        temp.next = newNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addAtIndex</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index &gt; size)&#123;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode newNode = <span class="keyword">new</span> ListNode(val);</span><br><span class="line">        ListNode temp = dummyHead;</span><br><span class="line">        <span class="comment">//java while循环中 判断条件 限制，以下while为错误的</span></span><br><span class="line">        <span class="comment">// while(index--)&#123;</span></span><br><span class="line">        <span class="comment">//     temp = temp.next;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">//虚拟头结点 temp 指向插入处的前一个node</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; index ; ++i)&#123;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        newNode.next = temp.next; </span><br><span class="line">        temp.next = newNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Delete the index-th node in the linked list, if the index is valid. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAtIndex</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= size)&#123;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        ListNode temp = dummyHead;</span><br><span class="line">		<span class="comment">//指向要删除的前一个结点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; index ; ++i)&#123;</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        temp.next = temp.next.next;</span><br><span class="line">        size --;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyLinkedList object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyLinkedList obj = new MyLinkedList();</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.get(index);</span></span><br><span class="line"><span class="comment"> * obj.addAtHead(val);</span></span><br><span class="line"><span class="comment"> * obj.addAtTail(val);</span></span><br><span class="line"><span class="comment"> * obj.addAtIndex(index,val);</span></span><br><span class="line"><span class="comment"> * obj.deleteAtIndex(index);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
@@ -874,7 +896,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2021
+        2021-2022
         <i class="ri-heart-fill heart_icon"></i> ylshi
       </li>
     </ul>
